@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,11 +38,23 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
-        title: const Text('Edu Point',
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.normal,
-                fontFamily: 'Cairo-Regular')),
+        title: RichText(
+            text: const TextSpan(
+                text: "Edu",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.normal,
+                    fontFamily: 'Cairo-Regular'),
+                children: [
+              TextSpan(
+                  text: ' Point',
+                  style: TextStyle(
+                      color: Color.fromRGBO(130, 133, 168, 1),
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Cairo-Regular'))
+            ])),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(40),
           child: Column(
@@ -141,6 +155,8 @@ class DashboardPage extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: Color.fromARGB(255, 168, 175, 255),
                     minimumSize: const Size(double.infinity, 100),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0))),
@@ -158,6 +174,8 @@ class DashboardPage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
                   minimumSize: const Size(double.infinity, 100),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
@@ -176,6 +194,8 @@ class DashboardPage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
                   minimumSize: const Size(double.infinity, 100),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
@@ -195,6 +215,8 @@ class DashboardPage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
                   minimumSize: const Size(double.infinity, 100),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
@@ -214,6 +236,8 @@ class DashboardPage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
                   minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
@@ -255,6 +279,8 @@ class LessonResources extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width / 2 - 20,
                             MediaQuery.of(context).size.height / 2 - 170),
@@ -271,6 +297,8 @@ class LessonResources extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width / 2 - 20,
                             MediaQuery.of(context).size.height / 2 - 170),
@@ -292,6 +320,8 @@ class LessonResources extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width / 2 - 20,
                             MediaQuery.of(context).size.height / 2 - 170),
@@ -308,6 +338,8 @@ class LessonResources extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width / 2 - 20,
                             MediaQuery.of(context).size.height / 2 - 170),
@@ -328,6 +360,8 @@ class LessonResources extends StatelessWidget {
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 25, 50),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
@@ -376,85 +410,157 @@ class StudentAttendance extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("Lessons & Resources",
+            const Text("Student Attendance",
                 style: TextStyle(
                     fontSize: 28,
                     color: Colors.white,
                     fontFamily: 'Cairo-Regular',
                     fontWeight: FontWeight.w400)),
-            const Text("", style: TextStyle(fontSize: 25)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: Size(
-                            MediaQuery.of(context).size.width / 2 - 20,
-                            MediaQuery.of(context).size.height / 2 - 170),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Pre-Class',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35))),
-                const Text("  ", style: TextStyle(fontSize: 25)),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: Size(
-                            MediaQuery.of(context).size.width / 2 - 20,
-                            MediaQuery.of(context).size.height / 2 - 170),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Lesson Plan',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35)))
-              ],
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EnglishAttendance()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('English',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
             ),
             const Text("", style: TextStyle(fontSize: 10)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: Size(
-                            MediaQuery.of(context).size.width / 2 - 20,
-                            MediaQuery.of(context).size.height / 2 - 170),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Quizzes',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35))),
-                const Text("  ", style: TextStyle(fontSize: 25)),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: Size(
-                            MediaQuery.of(context).size.width / 2 - 20,
-                            MediaQuery.of(context).size.height / 2 - 170),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Reference Book',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35)))
-              ],
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Math',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Science',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Back',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class EnglishAttendance extends StatelessWidget {
+  const EnglishAttendance({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text("English Attendance",
+                style: TextStyle(
+                    fontSize: 28,
+                    color: Colors.white,
+                    fontFamily: 'Cairo-Regular',
+                    fontWeight: FontWeight.w400)),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EnglishAttendance()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                  fixedSize: Size(MediaQuery.of(context).size.width - 25, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Scan Barcode',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  fixedSize: Size(MediaQuery.of(context).size.width - 25, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Manual Attendance',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  fixedSize: Size(MediaQuery.of(context).size.width - 25, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Student List',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
             ),
             const Text("", style: TextStyle(fontSize: 10)),
             ElevatedButton(
@@ -492,8 +598,160 @@ class Profile extends StatelessWidget {
   const Profile({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Profile"),
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text("Profile",
+                style: TextStyle(
+                    fontSize: 28,
+                    color: Colors.white,
+                    fontFamily: 'Cairo-Regular',
+                    fontWeight: FontWeight.w400)),
+            const Text("", style: TextStyle(fontSize: 10)),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Color.fromARGB(100, 98, 107, 182),
+              ),
+              width: MediaQuery.of(context).size.width - 25,
+              height: MediaQuery.of(context).size.height - 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: Colors.black,
+                    size: MediaQuery.of(context).size.width / 2,
+                  ),
+                  const Text("Jeffery Bezoz",
+                      style: TextStyle(
+                          fontSize: 28,
+                          color: Colors.white,
+                          fontFamily: 'Cairo-Regular',
+                          fontWeight: FontWeight.w400)),
+                  const Text("", style: TextStyle(fontSize: 10)),
+                  RichText(
+                      textAlign: TextAlign.left,
+                      text: const TextSpan(
+                          text: "Location: ",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w600),
+                          children: [
+                            TextSpan(
+                                text: 'North Sumatra',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontFamily: 'Cairo-Regular',
+                                    fontWeight: FontWeight.w400))
+                          ])),
+                  const Text("", style: TextStyle(fontSize: 10)),
+                  RichText(
+                      textAlign: TextAlign.left,
+                      text: const TextSpan(
+                          text: "Education: ",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w600),
+                          children: [
+                            TextSpan(
+                                text: 'Degree in Education',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontFamily: 'Cairo-Regular',
+                                    fontWeight: FontWeight.w400))
+                          ])),
+                  const Text("", style: TextStyle(fontSize: 10)),
+                  RichText(
+                      textAlign: TextAlign.left,
+                      text: const TextSpan(
+                          text: "Experience: ",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w600),
+                          children: [
+                            TextSpan(
+                                text: '5 Years',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontFamily: 'Cairo-Regular',
+                                    fontWeight: FontWeight.w400))
+                          ])),
+                  const Text("", style: TextStyle(fontSize: 10)),
+                  RichText(
+                      textAlign: TextAlign.left,
+                      text: const TextSpan(
+                          text: "Subject: ",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w600),
+                          children: [
+                            TextSpan(
+                                text: 'English',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontFamily: 'Cairo-Regular',
+                                    fontWeight: FontWeight.w400))
+                          ])),
+                  const Text("", style: TextStyle(fontSize: 1)),
+                  const Text(
+                    "About",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                        fontFamily: 'Cairo-Regular',
+                        fontWeight: FontWeight.w600),
+                  ),
+                  const Text(
+                    'Licensed School Teacher with 5 years of experience managing classrooms of 20 - 30 students. Adept at using positive reinforcement teaching techniques to encourage student learning and growth.',
+                    style: TextStyle(
+                        overflow: TextOverflow.clip,
+                        fontSize: 16,
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                        fontFamily: 'Cairo-Regular',
+                        fontWeight: FontWeight.w400),
+                    textAlign: TextAlign.center,
+                    softWrap: true,
+                  ),
+                  const Text("", style: TextStyle(fontSize: 10)),
+                ],
+              ),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  fixedSize: Size(MediaQuery.of(context).size.width - 25, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Back',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
