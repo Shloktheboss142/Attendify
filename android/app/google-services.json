@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1056936721175",
+    "project_id": "edupoint-8e35b",
+    "storage_bucket": "edupoint-8e35b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056936721175:android:5c569c1fa5f20a91525552",
+        "android_client_info": {
+          "package_name": "com.example.edu_point"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056936721175-aineiqpakd593r3qnce4s3m8hpd128i6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj54qtiaBAJqfR1ivFsNFPDWFLXlwI9dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056936721175-aineiqpakd593r3qnce4s3m8hpd128i6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1056936721175-jc69qlmfvodis090ekh66duva3q8sbjg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eduPoint"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
