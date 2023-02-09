@@ -1,5 +1,6 @@
 import 'package:edu_point/login_screen.dart';
 import 'package:edu_point/signup_screen.dart';
+import 'package:edu_point/further_registration.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {

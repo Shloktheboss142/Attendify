@@ -1,6 +1,8 @@
+import 'package:edu_point/further_registration.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter a value',
@@ -30,8 +32,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
   String email = '';
   String password = '';
+  String password1 = '';
+  String password2 = '';
+  String name = '';
+  String emailText = "Enter your email";
+  var emailColor = Colors.white;
+  String passwordText1 = "Create a password";
+  String passwordText2 = "Enter the password again";
+  var passwordColor = Colors.white;
   bool showSpinner = false;
   @override
+  void initState() {
+    var passwordVisible = false;
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
@@ -41,21 +55,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              TextField(
-                  style: const TextStyle(color: Colors.white),
-                  cursorColor: Colors.white,
-                  obscureText: false,
-                  textAlign: TextAlign.center,
-                  // onChanged: (value) {
-                  //   password = value;
-                  // },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'What should we call you?')),
-              const SizedBox(
-                height: 8.0,
-              ),
               TextField(
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
@@ -65,20 +65,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     email = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your email')),
-              const SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                  style: const TextStyle(color: Colors.white),
-                  cursorColor: Colors.white,
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  // onChanged: (value) {
-                  //   password = value;
-                  // },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Create a password')),
+                      hintText: emailText,
+                      hintStyle: TextStyle(color: emailColor))),
               const SizedBox(
                 height: 8.0,
               ),
@@ -88,10 +76,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   obscureText: true,
                   textAlign: TextAlign.center,
                   onChanged: (value) {
-                    password = value;
+                    password1 = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter the password again')),
+                      hintText: passwordText1,
+                      hintStyle: TextStyle(color: passwordColor))),
+              const SizedBox(
+                height: 8.0,
+              ),
+              TextField(
+                  style: const TextStyle(color: Colors.white),
+                  cursorColor: Colors.white,
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    password2 = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: passwordText2,
+                      hintStyle: TextStyle(color: passwordColor))),
               const SizedBox(
                 height: 24.0,
               ),
@@ -101,13 +104,47 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     showSpinner = true;
                   });
                   try {
-                    final newUser = await _auth.createUserWithEmailAndPassword(
-                        email: email, password: password);
-                    if (newUser != null) {
-                      Navigator.pushNamed(context, 'home_screen');
+                    if (password1 == password2) {
+                      password = password1;
+                      final newUser =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      if (newUser != null) {
+                        // ignore: use_build_context_synchronously
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const FurtherRegistration()));
+                      }
+                    } else {
+                      RegistrationScreen;
                     }
                   } catch (e) {
-                    print(e);
+                    if (e.toString() ==
+                        "[firebase_auth/email-already-in-use] The email address is already in use by another account.") {
+                      emailText = ("A user with that email aready exists");
+                      passwordText1 = 'Create a password';
+                      passwordText2 = "Enter the password again";
+                      passwordColor = Colors.white;
+                      emailColor = Colors.red;
+                    } else if (e.toString() ==
+                        "[firebase_auth/invalid-email] The email address is badly formatted.") {
+                      emailText = ("Badly formatted email");
+                      passwordText1 = 'Create a password';
+                      passwordText2 = "Enter the password again";
+                      passwordColor = Colors.white;
+                      emailColor = Colors.red;
+                    } else if (e.toString() ==
+                        "[firebase_auth/weak-password] Password should be at least 6 characters") {
+                      passwordText1 = 'Password must be at least 6 characters';
+                      passwordText2 = 'Password must be at least 6 characters';
+                      emailText = ("Enter your email");
+                      emailColor = Colors.white;
+                      passwordColor = Colors.red;
+                    } else {
+                      print(e);
+                    }
                   }
                   setState(() {
                     showSpinner = false;
@@ -120,7 +157,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         Size.fromWidth(MediaQuery.of(context).size.width / 2),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0))),
-                child: const Text('Register',
+                child: const Text('Continue',
                     style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'Staatliches',
