@@ -66,6 +66,7 @@ flutter:
 
   assets:
     - assets/LessonResources.png
+    - assets/english.jpg
 
   fonts:
     - family: Staatliches     
