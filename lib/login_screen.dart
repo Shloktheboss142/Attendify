@@ -1,9 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-//code for designing the UI of our text field where the user writes his email id or password
 
 const kTextFieldDecoration = InputDecoration(
     hintText: 'Enter a value',
@@ -32,9 +29,9 @@ final _auth = FirebaseAuth.instance;
 
 class _LoginScreenState extends State<LoginScreen> {
   String passwordText = 'Enter your password';
-  var passwordColor = Colors.white;
+  var passwordColor = Color.fromARGB(150, 255, 255, 255);
   String emailText = "Enter your email";
-  var emailColor = Colors.white;
+  var emailColor = Color.fromARGB(150, 255, 255, 255);
   String email = '';
   String password = '';
   bool showSpinner = false;
@@ -95,13 +92,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         "[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.") {
                       emailText = ("No user found for that email");
                       passwordText = 'Enter your password';
-                      passwordColor = Colors.white;
+                      passwordColor = Color.fromARGB(150, 255, 255, 255);
                       emailColor = Colors.red;
                     } else if (e.toString() ==
                         "[firebase_auth/wrong-password] The password is invalid or the user does not have a password.") {
                       passwordText = 'Password incorrect, please try again';
                       emailText = ("Enter your email");
-                      emailColor = Colors.white;
+                      emailColor = Color.fromARGB(150, 255, 255, 255);
                       passwordColor = Colors.red;
                     } else {
                       print(e);
