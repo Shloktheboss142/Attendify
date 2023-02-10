@@ -6,7 +6,6 @@ import 'home_screen.dart';
 import 'signup_screen.dart';
 import 'login_screen.dart';
 import 'further_registration.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 
 void main() async {

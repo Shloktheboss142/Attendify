@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter a value',
@@ -38,8 +39,27 @@ class _FurtherRegistration extends State<FurtherRegistration> {
   String subject = '';
   String about = '';
   bool showSpinner = false;
+  bool submit = false;
+  final TextEditingController controller = TextEditingController();
   var db = FirebaseFirestore.instance;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.addListener(() {
+      setState(() {
+        submit = controller.text.isNotEmpty;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    controller.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
@@ -54,13 +74,16 @@ class _FurtherRegistration extends State<FurtherRegistration> {
               TextField(
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
+                  controller: controller,
                   obscureText: false,
                   textAlign: TextAlign.center,
                   onChanged: (value) {
                     name = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'What should we call you?')),
+                      hintText: 'What should we call you?',
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
               ),
@@ -73,7 +96,9 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     location = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Where are you situated? (optional)')),
+                      hintText: 'Where are you situated? (optional)',
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
               ),
@@ -86,7 +111,9 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     education = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Educational background (optional)')),
+                      hintText: 'Educational background (optional)',
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
               ),
@@ -99,7 +126,9 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     experience = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Years of experience (optional)')),
+                      hintText: 'Years of experience (optional)',
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
               ),
@@ -112,7 +141,9 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     subject = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'What subject(s) do you teach?')),
+                      hintText: 'What subject(s) do you teach? (optional)',
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
               ),
@@ -125,48 +156,52 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     about = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Give some info about yourself (optional)')),
+                      hintText: 'Give some info about yourself (optional)',
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 40.0,
               ),
               ElevatedButton(
-                onPressed: () async {
-                  SystemChannels.textInput.invokeMethod('TextInput.hide');
+                onPressed: submit
+                    ? () async {
+                        SystemChannels.textInput.invokeMethod('TextInput.hide');
 
-                  setState(() {
-                    showSpinner = true;
-                  });
+                        setState(() {
+                          showSpinner = true;
+                        });
 
-                  await Future.delayed(Duration(seconds: 2));
+                        await Future.delayed(Duration(seconds: 2));
 
-                  final FirebaseAuth auth = FirebaseAuth.instance;
+                        final FirebaseAuth auth = FirebaseAuth.instance;
 
-                  upload() async {
-                    final User user = auth.currentUser!;
-                    final uid = user.uid;
-                    final uemail = user.email;
+                        upload() async {
+                          final User user = auth.currentUser!;
+                          final uid = user.uid;
+                          final uemail = user.email;
 
-                    final info = <String, dynamic>{
-                      "email": uemail,
-                      "name": name,
-                      "location": location,
-                      "education": education,
-                      "experience": experience,
-                      "subject": subject,
-                      "about": about
-                    };
+                          final info = <String, dynamic>{
+                            "email": uemail,
+                            "name": name,
+                            "location": location,
+                            "education": education,
+                            "experience": experience,
+                            "subject": subject,
+                            "about": about
+                          };
 
-                    db.collection('Users').doc(uid).set(info);
-                  }
+                          db.collection('Users').doc(uid).set(info);
+                        }
 
-                  upload();
+                        upload();
 
-                  Navigator.pushNamed(context, 'home_screen');
+                        Navigator.pushNamed(context, 'home_screen');
 
-                  setState(() {
-                    showSpinner = false;
-                  });
-                },
+                        setState(() {
+                          showSpinner = false;
+                        });
+                      }
+                    : () => null,
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
                     backgroundColor: const Color.fromARGB(255, 168, 175, 255),
@@ -187,7 +222,6 @@ class _FurtherRegistration extends State<FurtherRegistration> {
     );
   }
 }
-
 
 
 //Confirm Password

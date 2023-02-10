@@ -32,18 +32,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
   String email = '';
   String password = '';
-  String password1 = '';
-  String password2 = '';
   String name = '';
   String emailText = "Enter your email";
   var emailColor = Colors.white;
-  String passwordText1 = "Create a password";
-  String passwordText2 = "Enter the password again";
+  String passwordText = "Create a password";
   var passwordColor = Colors.white;
   bool showSpinner = false;
+  final TextEditingController controller = TextEditingController();
+  bool submit = false;
   @override
   void initState() {
-    var passwordVisible = false;
+    // TODO: implement initState
+    super.initState();
+    controller.addListener(() {
+      setState(() {
+        submit = controller.text.isNotEmpty;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    controller.dispose();
+    super.dispose();
   }
 
   Widget build(BuildContext context) {
@@ -66,90 +78,95 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: emailText,
-                      hintStyle: TextStyle(color: emailColor))),
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
               ),
               TextField(
                   style: const TextStyle(color: Colors.white),
+                  controller: controller,
                   cursorColor: Colors.white,
                   obscureText: true,
                   textAlign: TextAlign.center,
                   onChanged: (value) {
-                    password1 = value;
+                    password = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: passwordText1,
-                      hintStyle: TextStyle(color: passwordColor))),
+                      hintText: passwordText,
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
               ),
-              TextField(
-                  style: const TextStyle(color: Colors.white),
-                  cursorColor: Colors.white,
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    password2 = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: passwordText2,
-                      hintStyle: TextStyle(color: passwordColor))),
+              FlutterPwValidator(
+                controller: controller,
+                minLength: 6,
+                uppercaseCharCount: 1,
+                numericCharCount: 1,
+                specialCharCount: 1,
+                width: 380,
+                height: 120,
+                onSuccess: () {
+                  submit = true;
+                },
+                onFail: () {
+                  submit = false;
+                },
+              ),
               const SizedBox(
                 height: 24.0,
               ),
               ElevatedButton(
-                onPressed: () async {
-                  setState(() {
-                    showSpinner = true;
-                  });
-                  try {
-                    if (password1 == password2) {
-                      password = password1;
-                      final newUser =
-                          await _auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
-                      if (newUser != null) {
-                        // ignore: use_build_context_synchronously
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const FurtherRegistration()));
+                onPressed: submit
+                    ? () async {
+                        setState(() {
+                          showSpinner = true;
+                        });
+                        try {
+                          final newUser =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: email, password: password);
+                          if (newUser != null) {
+                            // ignore: use_build_context_synchronously
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const FurtherRegistration()));
+                          } else {
+                            RegistrationScreen;
+                          }
+                        } catch (e) {
+                          if (e.toString() ==
+                              "[firebase_auth/email-already-in-use] The email address is already in use by another account.") {
+                            emailText =
+                                ("A user with that email aready exists");
+                            passwordText = 'Create a password';
+                            passwordColor = Colors.white;
+                            emailColor = Colors.red;
+                          } else if (e.toString() ==
+                              "[firebase_auth/invalid-email] The email address is badly formatted.") {
+                            emailText = ("Badly formatted email");
+                            passwordText = 'Create a password';
+                            passwordColor = Colors.white;
+                            emailColor = Colors.red;
+                          } else if (e.toString() ==
+                              "[firebase_auth/weak-password] Password should be at least 6 characters") {
+                            passwordText =
+                                'Password must be at least 6 characters';
+                            emailText = ("Enter your email");
+                            emailColor = Colors.white;
+                            passwordColor = Colors.red;
+                          } else {
+                            print(e);
+                          }
+                        }
+                        setState(() {
+                          showSpinner = false;
+                        });
                       }
-                    } else {
-                      RegistrationScreen;
-                    }
-                  } catch (e) {
-                    if (e.toString() ==
-                        "[firebase_auth/email-already-in-use] The email address is already in use by another account.") {
-                      emailText = ("A user with that email aready exists");
-                      passwordText1 = 'Create a password';
-                      passwordText2 = "Enter the password again";
-                      passwordColor = Colors.white;
-                      emailColor = Colors.red;
-                    } else if (e.toString() ==
-                        "[firebase_auth/invalid-email] The email address is badly formatted.") {
-                      emailText = ("Badly formatted email");
-                      passwordText1 = 'Create a password';
-                      passwordText2 = "Enter the password again";
-                      passwordColor = Colors.white;
-                      emailColor = Colors.red;
-                    } else if (e.toString() ==
-                        "[firebase_auth/weak-password] Password should be at least 6 characters") {
-                      passwordText1 = 'Password must be at least 6 characters';
-                      passwordText2 = 'Password must be at least 6 characters';
-                      emailText = ("Enter your email");
-                      emailColor = Colors.white;
-                      passwordColor = Colors.red;
-                    } else {
-                      print(e);
-                    }
-                  }
-                  setState(() {
-                    showSpinner = false;
-                  });
-                },
+                    : () => null,
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
                     backgroundColor: const Color.fromARGB(255, 168, 175, 255),
