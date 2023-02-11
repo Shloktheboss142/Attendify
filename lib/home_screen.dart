@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:jiffy/jiffy.dart';
 import 'profile.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -464,7 +467,7 @@ class StudentAttendance extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
@@ -529,6 +532,22 @@ class EnglishAttendance extends StatelessWidget {
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Scan QR',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 20,
+                      MediaQuery.of(context).size.height / 8),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
               child: const Text('Manual Attendance',
                   style: TextStyle(
                       color: Colors.black,
@@ -559,7 +578,7 @@ class EnglishAttendance extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
@@ -624,6 +643,22 @@ class MathAttendance extends StatelessWidget {
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Scan QR',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 20,
+                      MediaQuery.of(context).size.height / 8),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
               child: const Text('Manual Attendance',
                   style: TextStyle(
                       color: Colors.black,
@@ -654,7 +689,7 @@ class MathAttendance extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
@@ -719,6 +754,22 @@ class ScienceAttendance extends StatelessWidget {
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Scan QR',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 20,
+                      MediaQuery.of(context).size.height / 8),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
               child: const Text('Manual Attendance',
                   style: TextStyle(
                       color: Colors.black,
@@ -749,7 +800,7 @@ class ScienceAttendance extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
@@ -770,20 +821,40 @@ class ScanBarcode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      color: const Color.fromRGBO(40, 43, 78, 1),
-      alignment: Alignment.center,
-      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        const Text("Scan Barcode",
-            style: TextStyle(
-                fontSize: 28,
-                color: Colors.white,
-                fontFamily: 'Cairo-Regular',
-                fontWeight: FontWeight.w400)),
-        const Text("", style: TextStyle(fontSize: 10)),
-      ]),
-    ));
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text("Scan Barcode",
+                style: TextStyle(
+                    fontSize: 28,
+                    color: Colors.white,
+                    fontFamily: "Cairo-Regular",
+                    fontWeight: FontWeight.w400)),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0))),
+              child: const Text('Back',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
