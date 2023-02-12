@@ -2,7 +2,7 @@ import 'package:edu_point/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -28,55 +28,57 @@ class _ProfileState extends State<Profile> {
         (route) => false);
   }
 
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
   String UserID = FirebaseAuth.instance.currentUser!.uid;
 
-  String? name;
-  String? location;
-  String? education;
-  String? experience;
-  String? subject;
-  String? about;
+  String? name = '';
+  String? location = '';
+  String? education = '';
+  String? experience = '';
+  String? subject = '';
+  String? about = '';
 
-  String UserIdentifier = 'Users/';
-
-  Future getData() async {
-    // FirebaseDatabase database = FirebaseDatabase.instance;
-    // UserIdentifier = UserIdentifier + UserID;
-    // print(UserIdentifier);
-    // DatabaseReference ref = FirebaseDatabase.instance.ref(UserIdentifier);
-    // print(ref.once());
-
-// Get the data once
-    // DatabaseEvent event = await ref.once();
-
-// Print the data of the snapshot
-    // print(event.snapshot.value); // { "name": "John" }
-
-    await FirebaseFirestore.instance
-        .collection("Users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .get()
-        .then((snapshot) async {
-      if (snapshot.exists) {
-        setState(() {
-          name = snapshot.data()!['name'];
-          location = snapshot.data()!['location'];
-          education = snapshot.data()!['education'];
-          experience = snapshot.data()!['experience'];
-          subject = snapshot.data()!['subject'];
-          about = snapshot.data()!['about'];
-        });
-      }
-    });
+  @override
+  void initState() {
+    getData();
+    super.initState();
   }
 
-  bool showSpinner = false;
+  Future getData() async {
+    final ref = FirebaseDatabase.instance.ref();
+    final snapshot = await ref.child('Users/$UserID').get();
+    if (snapshot.exists) {
+      // print(snapshot.value);
+      setState(() {
+        name = snapshot.child('name').value.toString();
+        location = snapshot.child('location').value.toString();
+        education = snapshot.child('education').value.toString();
+        experience = snapshot.child('experience').value.toString();
+        subject = snapshot.child('subject').value.toString();
+        about = snapshot.child('about').value.toString();
+      });
+    } else {
+      print('No data available.');
+    }
+
+    // name = event.snapshot.value.toString();
+
+    // await FirebaseFirestore.instance
+    //     .collection("Users")
+    //     .doc(FirebaseAuth.instance.currentUser!.uid)
+    //     .get()
+    //     .then((snapshot) async {
+    //   if (snapshot.exists) {
+    //     setState(() {
+    //       name = snapshot.data()!['name'];
+    //       location = snapshot.data()!['location'];
+    //       education = snapshot.data()!['education'];
+    //       experience = snapshot.data()!['experience'];
+    //       subject = snapshot.data()!['subject'];
+    //       about = snapshot.data()!['about'];
+    //     });
+    //   }
+    // });
+  }
 
   @override
   Widget build(BuildContext context) {

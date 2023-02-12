@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter a value',
@@ -175,12 +176,16 @@ class _FurtherRegistration extends State<FurtherRegistration> {
 
                         final FirebaseAuth auth = FirebaseAuth.instance;
 
+                        String UserID = FirebaseAuth.instance.currentUser!.uid;
+
                         upload() async {
                           final User user = auth.currentUser!;
-                          final uid = user.uid;
                           final uemail = user.email;
 
-                          final info = <String, dynamic>{
+                          DatabaseReference ref =
+                              FirebaseDatabase.instance.ref("Users/$UserID");
+
+                          await ref.set({
                             "email": uemail,
                             "name": name,
                             "location": location,
@@ -188,9 +193,19 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                             "experience": experience,
                             "subject": subject,
                             "about": about
-                          };
+                          });
 
-                          db.collection('Users').doc(uid).set(info);
+                          // final info = <String, dynamic>{
+                          //   "email": uemail,
+                          //   "name": name,
+                          //   "location": location,
+                          //   "education": education,
+                          //   "experience": experience,
+                          //   "subject": subject,
+                          //   "about": about
+                          // };
+
+                          // db.collection('Users').doc(uid).set(info);
                         }
 
                         upload();
