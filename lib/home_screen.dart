@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jiffy/jiffy.dart';
 import 'profile.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -816,42 +815,139 @@ class ScienceAttendance extends StatelessWidget {
   }
 }
 
-class ScanBarcode extends StatelessWidget {
-  const ScanBarcode({super.key});
+class ScanBarcode extends StatefulWidget {
+  final VoidCallback? foundBarcode;
+  const ScanBarcode({Key? key, this.foundBarcode}) : super(key: key);
+
+  @override
+  State<ScanBarcode> createState() => _ScanBarcodeState();
+}
+
+class _ScanBarcodeState extends State<ScanBarcode> {
+  MobileScannerController cameraController = MobileScannerController();
+  bool _screenOpened = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: const Color.fromRGBO(40, 43, 78, 1),
-        alignment: Alignment.center,
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text("Scan Barcode",
-                style: TextStyle(
-                    fontSize: 28,
-                    color: Colors.white,
-                    fontFamily: "Cairo-Regular",
-                    fontWeight: FontWeight.w400)),
-            const Text("", style: TextStyle(fontSize: 10)),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
+      appBar: AppBar(
+        title: const Text("Mobile Scanner"),
+        actions: [
+          IconButton(
+            color: Colors.white,
+            icon: ValueListenableBuilder(
+              valueListenable: cameraController.torchState,
+              builder: (context, state, child) {
+                switch (state as TorchState) {
+                  case TorchState.off:
+                    return const Icon(Icons.flash_off, color: Colors.grey);
+                  case TorchState.on:
+                    return const Icon(Icons.flash_on, color: Colors.yellow);
+                }
               },
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0))),
-              child: const Text('Back',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
             ),
-          ],
+            iconSize: 32.0,
+            onPressed: () => cameraController.toggleTorch(),
+          ),
+          IconButton(
+            color: Colors.white,
+            icon: ValueListenableBuilder(
+              valueListenable: cameraController.cameraFacingState,
+              builder: (context, state, child) {
+                switch (state as CameraFacing) {
+                  case CameraFacing.front:
+                    return const Icon(Icons.camera_front);
+                  case CameraFacing.back:
+                    return const Icon(Icons.camera_rear);
+                }
+              },
+            ),
+            iconSize: 32.0,
+            onPressed: () => cameraController.switchCamera(),
+          ),
+        ],
+      ),
+      body: MobileScanner(
+        allowDuplicates: true,
+        controller: cameraController,
+        onDetect: _foundBarcode,
+      ),
+    );
+  }
+
+  void _foundBarcode(Barcode barcode, MobileScannerArguments? args) {
+    if (!_screenOpened) {
+      final String code = barcode.rawValue ?? "---";
+      debugPrint('Barcode found! $code');
+      _screenOpened = true;
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              FoundCodeScreen(screenClosed: _screenWasClosed, value: code),
+        ),
+      );
+    }
+  }
+
+  void _screenWasClosed() {
+    _screenOpened = false;
+  }
+}
+
+class FoundCodeScreen extends StatefulWidget {
+  final String value;
+  final Function() screenClosed;
+  const FoundCodeScreen({
+    Key? key,
+    required this.value,
+    required this.screenClosed,
+  }) : super(key: key);
+
+  @override
+  State<FoundCodeScreen> createState() => _FoundCodeScreenState();
+}
+
+class _FoundCodeScreenState extends State<FoundCodeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Found Code"),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            widget.screenClosed();
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_outlined,
+          ),
+        ),
+      ),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Scanned Code:",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                widget.value,
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -31,8 +31,6 @@ dependencies:
 
   jiffy: ^5.0.0
 
-  flutter_barcode_scanner: ^2.0.0
-
   cloud_firestore: ^4.3.1
 
   firebase_auth: ^4.2.5
@@ -44,9 +42,10 @@ dependencies:
   flutter_pw_validator: ^1.5.0
 
   shared_preferences: ^2.0.17
-  
-  qr_code_scanner: ^1.0.1
 
+  mobile_scanner: ^1.0.0
+  
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

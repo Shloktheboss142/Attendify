@@ -7,6 +7,7 @@ import 'signup_screen.dart';
 import 'login_screen.dart';
 import 'further_registration.dart';
 import 'dart:async';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
