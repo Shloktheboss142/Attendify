@@ -42,7 +42,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   bool submit = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.addListener(() {
       setState(() {
@@ -53,7 +52,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     controller.dispose();
     super.dispose();
   }
@@ -78,7 +76,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: emailText,
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
@@ -94,7 +92,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: passwordText,
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
@@ -205,8 +203,3 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 }
-
-
-
-//Confirm Password
-//name
