@@ -47,6 +47,8 @@ dependencies:
   
   qr_code_scanner: ^1.0.1
 
+  firebase_database: ^10.0.10
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

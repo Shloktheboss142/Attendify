@@ -2,6 +2,7 @@ import 'package:edu_point/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_database/firebase_database.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -12,8 +13,16 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   void logout() async {
+    // setState(() {
+    //   showSpinner = true;
+    // });
+
+    // await Future.delayed(Duration(seconds: 2));
+
+    // setState(() {
+    //   showSpinner = false;
+    // });
     await FirebaseAuth.instance.signOut();
-    // Navigator.pushNamed(context, Welcome.id);
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => const WelcomeScreen()),
         (route) => false);
@@ -25,6 +34,8 @@ class _ProfileState extends State<Profile> {
     getData();
   }
 
+  String UserID = FirebaseAuth.instance.currentUser!.uid;
+
   String? name;
   String? location;
   String? education;
@@ -32,7 +43,21 @@ class _ProfileState extends State<Profile> {
   String? subject;
   String? about;
 
+  String UserIdentifier = 'Users/';
+
   Future getData() async {
+    // FirebaseDatabase database = FirebaseDatabase.instance;
+    // UserIdentifier = UserIdentifier + UserID;
+    // print(UserIdentifier);
+    // DatabaseReference ref = FirebaseDatabase.instance.ref(UserIdentifier);
+    // print(ref.once());
+
+// Get the data once
+    // DatabaseEvent event = await ref.once();
+
+// Print the data of the snapshot
+    // print(event.snapshot.value); // { "name": "John" }
+
     await FirebaseFirestore.instance
         .collection("Users")
         .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -50,6 +75,8 @@ class _ProfileState extends State<Profile> {
       }
     });
   }
+
+  bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
@@ -192,23 +219,6 @@ class _ProfileState extends State<Profile> {
             const Text("", style: TextStyle(fontSize: 10)),
             ElevatedButton(
               onPressed: () {
-                // Future<void> signOut() async {
-                //   await FirebaseAuth.instance
-                //       .authStateChanges()
-                //       .listen((User? user) {
-                //     if (user == null) {
-                //       print('User is currently signed out!');
-                //     } else {
-                //       print('User is signed in!');
-                //     }
-                //   });
-                // }
-
-                // signOut();
-                // Navigator.of(context).pushAndRemoveUntil(
-                //     MaterialPageRoute(
-                //         builder: (context) => const WelcomeScreen()),
-                //     (route) => false);
                 logout();
               },
               style: ElevatedButton.styleFrom(
