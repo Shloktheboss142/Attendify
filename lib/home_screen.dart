@@ -824,13 +824,16 @@ class ScanBarcode extends StatefulWidget {
 }
 
 class _ScanBarcodeState extends State<ScanBarcode> {
-  MobileScannerController cameraController = MobileScannerController();
-  bool _screenOpened = false;
+  MobileScannerController cameraController =
+      MobileScannerController(); // defining mobile scanner controller
+  bool _screenOpened =
+      false; // to prevent from opening many screens everytime we want to scan
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
         title: const Text("Mobile Scanner"),
         actions: [
           IconButton(
@@ -847,7 +850,8 @@ class _ScanBarcodeState extends State<ScanBarcode> {
               },
             ),
             iconSize: 32.0,
-            onPressed: () => cameraController.toggleTorch(),
+            onPressed: () =>
+                cameraController.toggleTorch(), // to enable or disable flash
           ),
           IconButton(
             color: Colors.white,
@@ -863,14 +867,15 @@ class _ScanBarcodeState extends State<ScanBarcode> {
               },
             ),
             iconSize: 32.0,
-            onPressed: () => cameraController.switchCamera(),
+            onPressed: () =>
+                cameraController.switchCamera(), // to switch camera sides
           ),
         ],
       ),
       body: MobileScanner(
-        allowDuplicates: true,
+        allowDuplicates: true, // allow to scan multiple times
         controller: cameraController,
-        onDetect: _foundBarcode,
+        onDetect: _foundBarcode, // camera detecting barcode
       ),
     );
   }

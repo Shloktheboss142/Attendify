@@ -45,7 +45,8 @@ dependencies:
 
   mobile_scanner: ^1.0.0
   
-  
+  firebase_database: ^10.0.10
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,7 +68,6 @@ flutter:
 
   assets:
     - assets/LessonResources.png
-    - assets/english.jpg
 
   fonts:
     - family: Staatliches     

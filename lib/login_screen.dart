@@ -29,9 +29,9 @@ final _auth = FirebaseAuth.instance;
 
 class _LoginScreenState extends State<LoginScreen> {
   String passwordText = 'Enter your password';
-  var passwordColor = Color.fromARGB(150, 255, 255, 255);
+  var passwordColor = const Color.fromARGB(150, 255, 255, 255);
   String emailText = "Enter your email";
-  var emailColor = Color.fromARGB(150, 255, 255, 255);
+  var emailColor = const Color.fromARGB(150, 255, 255, 255);
   String email = '';
   String password = '';
   bool showSpinner = false;
@@ -45,10 +45,9 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               TextField(
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   keyboardType: TextInputType.emailAddress,
                   textAlign: TextAlign.center,
@@ -62,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 8.0,
               ),
               TextField(
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   obscureText: true,
                   textAlign: TextAlign.center,
@@ -84,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     final user = await _auth.signInWithEmailAndPassword(
                         email: email, password: password);
                     if (user != null) {
-                      await Future.delayed(Duration(seconds: 2));
+                      await Future.delayed(const Duration(seconds: 2));
                       Navigator.pushNamed(context, 'home_screen');
                     }
                   } catch (e) {
@@ -92,13 +91,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         "[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.") {
                       emailText = ("No user found for that email");
                       passwordText = 'Enter your password';
-                      passwordColor = Color.fromARGB(150, 255, 255, 255);
+                      passwordColor = const Color.fromARGB(150, 255, 255, 255);
                       emailColor = Colors.red;
                     } else if (e.toString() ==
                         "[firebase_auth/wrong-password] The password is invalid or the user does not have a password.") {
                       passwordText = 'Password incorrect, please try again';
                       emailText = ("Enter your email");
-                      emailColor = Color.fromARGB(150, 255, 255, 255);
+                      emailColor = const Color.fromARGB(150, 255, 255, 255);
                       passwordColor = Colors.red;
                     } else {
                       print(e);

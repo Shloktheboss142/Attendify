@@ -2,6 +2,7 @@ import 'package:edu_point/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -12,43 +13,71 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   void logout() async {
+    // setState(() {
+    //   showSpinner = true;
+    // });
+
+    // await Future.delayed(Duration(seconds: 2));
+
+    // setState(() {
+    //   showSpinner = false;
+    // });
     await FirebaseAuth.instance.signOut();
-    // Navigator.pushNamed(context, Welcome.id);
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => const WelcomeScreen()),
         (route) => false);
   }
 
+  String UserID = FirebaseAuth.instance.currentUser!.uid;
+
+  String? name = '';
+  String? location = '';
+  String? education = '';
+  String? experience = '';
+  String? subject = '';
+  String? about = '';
+
   @override
   void initState() {
-    super.initState();
     getData();
+    super.initState();
   }
 
-  String? name;
-  String? location;
-  String? education;
-  String? experience;
-  String? subject;
-  String? about;
-
   Future getData() async {
-    await FirebaseFirestore.instance
-        .collection("Users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .get()
-        .then((snapshot) async {
-      if (snapshot.exists) {
-        setState(() {
-          name = snapshot.data()!['name'];
-          location = snapshot.data()!['location'];
-          education = snapshot.data()!['education'];
-          experience = snapshot.data()!['experience'];
-          subject = snapshot.data()!['subject'];
-          about = snapshot.data()!['about'];
-        });
-      }
-    });
+    final ref = FirebaseDatabase.instance.ref();
+    final snapshot = await ref.child('Users/$UserID').get();
+    if (snapshot.exists) {
+      // print(snapshot.value);
+      setState(() {
+        name = snapshot.child('name').value.toString();
+        location = snapshot.child('location').value.toString();
+        education = snapshot.child('education').value.toString();
+        experience = snapshot.child('experience').value.toString();
+        subject = snapshot.child('subject').value.toString();
+        about = snapshot.child('about').value.toString();
+      });
+    } else {
+      print('No data available.');
+    }
+
+    // name = event.snapshot.value.toString();
+
+    // await FirebaseFirestore.instance
+    //     .collection("Users")
+    //     .doc(FirebaseAuth.instance.currentUser!.uid)
+    //     .get()
+    //     .then((snapshot) async {
+    //   if (snapshot.exists) {
+    //     setState(() {
+    //       name = snapshot.data()!['name'];
+    //       location = snapshot.data()!['location'];
+    //       education = snapshot.data()!['education'];
+    //       experience = snapshot.data()!['experience'];
+    //       subject = snapshot.data()!['subject'];
+    //       about = snapshot.data()!['about'];
+    //     });
+    //   }
+    // });
   }
 
   @override
@@ -192,23 +221,6 @@ class _ProfileState extends State<Profile> {
             const Text("", style: TextStyle(fontSize: 10)),
             ElevatedButton(
               onPressed: () {
-                // Future<void> signOut() async {
-                //   await FirebaseAuth.instance
-                //       .authStateChanges()
-                //       .listen((User? user) {
-                //     if (user == null) {
-                //       print('User is currently signed out!');
-                //     } else {
-                //       print('User is signed in!');
-                //     }
-                //   });
-                // }
-
-                // signOut();
-                // Navigator.of(context).pushAndRemoveUntil(
-                //     MaterialPageRoute(
-                //         builder: (context) => const WelcomeScreen()),
-                //     (route) => false);
                 logout();
               },
               style: ElevatedButton.styleFrom(
