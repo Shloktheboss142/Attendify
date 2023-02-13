@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Profile()),
+                MaterialPageRoute(builder: (context) => const Profile()),
               );
             },
           ),
@@ -95,8 +95,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: <Widget>[
         DashboardPage(),
-        InfoPage(),
-        SettingsPage()
+        const InfoPage(),
+        const SettingsPage()
       ][currentPageIndex],
     );
   }
@@ -115,114 +115,141 @@ class DashboardPage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("Dashboard",
-                style: TextStyle(
-                    fontSize: 28,
-                    color: Colors.white,
-                    fontFamily: 'Cairo-Regular',
-                    fontWeight: FontWeight.w400)),
-            const Text("", style: TextStyle(fontSize: 25)),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LessonResources()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                    minimumSize: const Size(double.infinity, 100),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0))),
-                child: const Text('Lessons & Resources',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'Staatliches',
-                        fontSize: 35))),
-            const Text("", style: TextStyle(fontSize: 25)),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const StudentAid()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  minimumSize: const Size(double.infinity, 100),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Student Aid',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
-            const Text("", style: TextStyle(fontSize: 25)),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Community()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  minimumSize: const Size(double.infinity, 100),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Community',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
-            const Text("", style: TextStyle(fontSize: 25)),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const StudentAttendance()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  minimumSize: const Size(double.infinity, 100),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Student Attendance',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
-            const Text("", style: TextStyle(fontSize: 25)),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const AttendanceReport()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  minimumSize: const Size(double.infinity, 50),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Attendance Report',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 220,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Dashboard",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const LessonResources()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 168, 175, 255),
+                              minimumSize: Size(
+                                  double.infinity,
+                                  (MediaQuery.of(context).size.height - 210) /
+                                      7),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0))),
+                          child: const Text('Lessons & Resources',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Staatliches',
+                                  fontSize: 35))),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const StudentAid()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            minimumSize: Size(double.infinity,
+                                (MediaQuery.of(context).size.height - 210) / 7),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0))),
+                        child: const Text('Student Aid',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Community()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            minimumSize: Size(double.infinity,
+                                (MediaQuery.of(context).size.height - 210) / 7),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0))),
+                        child: const Text('Community',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const StudentAttendance()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            minimumSize: Size(double.infinity,
+                                (MediaQuery.of(context).size.height - 210) / 7),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0))),
+                        child: const Text('Student Attendance',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AttendanceReport()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            minimumSize: Size(double.infinity,
+                                (MediaQuery.of(context).size.height - 210) / 7),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0))),
+                        child: const Text('Attendance Report',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
           ],
         ),
       ),
@@ -256,7 +283,8 @@ class LessonResources extends StatelessWidget {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                        backgroundColor:
+                            const Color.fromARGB(255, 168, 175, 255),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width / 2 - 20,
                             MediaQuery.of(context).size.height / 2 - 170),
@@ -274,7 +302,8 @@ class LessonResources extends StatelessWidget {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                        backgroundColor:
+                            const Color.fromARGB(255, 168, 175, 255),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width / 2 - 20,
                             MediaQuery.of(context).size.height / 2 - 170),
@@ -297,7 +326,8 @@ class LessonResources extends StatelessWidget {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                        backgroundColor:
+                            const Color.fromARGB(255, 168, 175, 255),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width / 2 - 20,
                             MediaQuery.of(context).size.height / 2 - 170),
@@ -315,7 +345,8 @@ class LessonResources extends StatelessWidget {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                        backgroundColor:
+                            const Color.fromARGB(255, 168, 175, 255),
                         fixedSize: Size(
                             MediaQuery.of(context).size.width / 2 - 20,
                             MediaQuery.of(context).size.height / 2 - 170),
@@ -337,7 +368,7 @@ class LessonResources extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 25, 50),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
@@ -403,7 +434,7 @@ class StudentAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -425,7 +456,7 @@ class StudentAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -447,7 +478,7 @@ class StudentAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -465,8 +496,8 @@ class StudentAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 200, 50),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
@@ -510,7 +541,7 @@ class EnglishAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -526,7 +557,7 @@ class EnglishAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -542,7 +573,7 @@ class EnglishAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -558,7 +589,7 @@ class EnglishAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -576,7 +607,7 @@ class EnglishAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
@@ -621,7 +652,7 @@ class MathAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -637,7 +668,7 @@ class MathAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -653,7 +684,7 @@ class MathAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -669,7 +700,7 @@ class MathAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -687,7 +718,7 @@ class MathAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
@@ -732,7 +763,7 @@ class ScienceAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -748,7 +779,7 @@ class ScienceAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -764,7 +795,7 @@ class ScienceAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -780,7 +811,7 @@ class ScienceAttendance extends StatelessWidget {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 20,
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
@@ -798,7 +829,7 @@ class ScienceAttendance extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  backgroundColor: Color.fromARGB(255, 168, 175, 255),
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
                   fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
@@ -918,36 +949,36 @@ class _FoundCodeScreenState extends State<FoundCodeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Found Code"),
+        title: const Text("Found Code"),
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
             widget.screenClosed();
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_outlined,
           ),
         ),
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 "Scanned Code:",
                 style: TextStyle(
                   fontSize: 20,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
                 widget.value,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
@@ -973,8 +1004,34 @@ class InfoPage extends StatelessWidget {
   const InfoPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Info"),
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.topCenter,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 220,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text("Information",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                    ]))
+          ],
+        ),
+      ),
     );
   }
 }
@@ -983,8 +1040,34 @@ class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Settings"),
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.topCenter,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 220,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text("Settings",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                    ]))
+          ],
+        ),
+      ),
     );
   }
 }
