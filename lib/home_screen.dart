@@ -497,7 +497,7 @@ class StudentAttendance extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 200, 50),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
@@ -608,7 +608,7 @@ class EnglishAttendance extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
@@ -719,7 +719,7 @@ class MathAttendance extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
@@ -830,7 +830,7 @@ class ScienceAttendance extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 300, 60),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               child: const Text('Back',
