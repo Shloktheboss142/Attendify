@@ -27,9 +27,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     color: Color.fromARGB(0, 98, 107, 182),
                   ),
                   width: MediaQuery.of(context).size.width - 25,
-                  height: MediaQuery.of(context).size.height - 750,
+                  height: MediaQuery.of(context).size.height - 650,
                   child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text("Welcome to",
                             style: TextStyle(
@@ -54,47 +54,53 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                       fontWeight: FontWeight.normal,
                                       fontFamily: 'Cairo-Regular'))
                             ])),
-                        const Text("", style: TextStyle(fontSize: 15)),
+                        const Text('',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 25)),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor:
+                                    Color.fromARGB(255, 168, 175, 255),
+                                minimumSize: const Size(double.infinity, 10),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0))),
+                            child: const Text('Login',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: 'Staatliches',
+                                    fontSize: 35))),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegistrationScreen()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor:
+                                    Color.fromARGB(255, 168, 175, 255),
+                                minimumSize: const Size(double.infinity, 10),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0))),
+                            child: const Text('Register',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: 'Staatliches',
+                                    fontSize: 35))),
                       ]),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                        minimumSize: const Size(double.infinity, 10),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Login',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35))),
-                const Text("", style: TextStyle(fontSize: 10)),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RegistrationScreen()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        backgroundColor: Color.fromARGB(255, 168, 175, 255),
-                        minimumSize: const Size(double.infinity, 10),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Register',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35))),
               ]),
         ));
   }
