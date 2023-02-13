@@ -1,8 +1,12 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'profile.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:open_file/open_file.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -58,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.circle, size: 40),
-            padding: const EdgeInsets.fromLTRB(0, 10, 25, 10),
+            padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
             onPressed: () {
               Navigator.push(
                 context,
@@ -75,7 +79,7 @@ class _HomePageState extends State<HomePage> {
           });
         },
         selectedIndex: currentPageIndex,
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
         destinations: const <Widget>[
           NavigationDestination(
@@ -110,7 +114,7 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: const Color.fromRGBO(40, 43, 78, 1),
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -121,7 +125,7 @@ class DashboardPage extends StatelessWidget {
                   color: const Color.fromARGB(0, 98, 107, 182),
                 ),
                 width: MediaQuery.of(context).size.width - 25,
-                height: MediaQuery.of(context).size.height - 220,
+                height: MediaQuery.of(context).size.height - 230,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -389,8 +393,445 @@ class StudentAid extends StatelessWidget {
   const StudentAid({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Student Aid"),
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 220,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Student Aid",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Healthcare()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 168, 175, 255),
+                              minimumSize: Size(
+                                  double.infinity,
+                                  (MediaQuery.of(context).size.height - 210) /
+                                      7),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0))),
+                          child: const Text('Healthcare',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Staatliches',
+                                  fontSize: 35))),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FoodNutrition()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            minimumSize: Size(double.infinity,
+                                (MediaQuery.of(context).size.height - 210) / 7),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0))),
+                        child: const Text('Food & Nutrition',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Scholarships()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            minimumSize: Size(double.infinity,
+                                (MediaQuery.of(context).size.height - 210) / 7),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0))),
+                        child: const Text('Scholarships',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ExtraLessons()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            minimumSize: Size(double.infinity,
+                                (MediaQuery.of(context).size.height - 210) / 7),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0))),
+                        child: const Text('Extra English Lessons',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            fixedSize: Size(
+                                MediaQuery.of(context).size.width - 200, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0))),
+                        child: const Text('Back',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Healthcare extends StatelessWidget {
+  const Healthcare({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 610,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Healthcare",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      ElevatedButton(
+                          onPressed: () {
+                            const url =
+                                'https://docs.google.com/forms/d/e/1FAIpQLSdJVCwBcOvV4G363oOjvxTVR3WWavHcjePuzNICX2w2WTyJMA/viewform?usp=sf_link';
+                            launchUrlString(url);
+                          },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 168, 175, 255),
+                              minimumSize: Size(
+                                  double.infinity,
+                                  (MediaQuery.of(context).size.height - 210) /
+                                      7),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0))),
+                          child: const Text('Open Form',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Staatliches',
+                                  fontSize: 35))),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            fixedSize: Size(
+                                MediaQuery.of(context).size.width - 200, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0))),
+                        child: const Text('Back',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FoodNutrition extends StatelessWidget {
+  const FoodNutrition({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 610,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Food & Nutrition",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      ElevatedButton(
+                          onPressed: () {
+                            const url =
+                                'https://docs.google.com/forms/d/e/1FAIpQLSe6isL_GnO97sieozXKTS9BmgHfpAgAiXvfi-EQv5A3s8iB5g/viewform?usp=sf_link';
+                            launchUrlString(url);
+                          },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 168, 175, 255),
+                              minimumSize: Size(
+                                  double.infinity,
+                                  (MediaQuery.of(context).size.height - 210) /
+                                      7),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0))),
+                          child: const Text('Open Form',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Staatliches',
+                                  fontSize: 35))),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            fixedSize: Size(
+                                MediaQuery.of(context).size.width - 200, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0))),
+                        child: const Text('Back',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Scholarships extends StatelessWidget {
+  const Scholarships({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 610,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Scholarships",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      ElevatedButton(
+                          onPressed: () {
+                            const url =
+                                'https://docs.google.com/forms/d/e/1FAIpQLSdOHKXxuJ3HgLRyfxdCfCL75Ozxy2iziUl5fHWJEmjUvZNDwA/viewform?usp=sf_link';
+                            launchUrlString(url);
+                          },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 168, 175, 255),
+                              minimumSize: Size(
+                                  double.infinity,
+                                  (MediaQuery.of(context).size.height - 210) /
+                                      7),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0))),
+                          child: const Text('Open Form',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Staatliches',
+                                  fontSize: 35))),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            fixedSize: Size(
+                                MediaQuery.of(context).size.width - 200, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0))),
+                        child: const Text('Back',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ExtraLessons extends StatelessWidget {
+  const ExtraLessons({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 610,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Extra English Lessons",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      ElevatedButton(
+                          onPressed: () {
+                            const url =
+                                'https://docs.google.com/forms/d/e/1FAIpQLSdF57ootuj51PZljRx0hjxqAvZrbndRK2uLcitSq_ZoCov8hg/viewform?usp=sf_link';
+                            launchUrlString(url);
+                          },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 168, 175, 255),
+                              minimumSize: Size(
+                                  double.infinity,
+                                  (MediaQuery.of(context).size.height - 210) /
+                                      7),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0))),
+                          child: const Text('Open Form',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Staatliches',
+                                  fontSize: 35))),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            fixedSize: Size(
+                                MediaQuery.of(context).size.width - 200, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0))),
+                        child: const Text('Back',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
+          ],
+        ),
+      ),
     );
   }
 }
@@ -1007,7 +1448,7 @@ class InfoPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: const Color.fromRGBO(40, 43, 78, 1),
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -1043,7 +1484,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: const Color.fromRGBO(40, 43, 78, 1),
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
