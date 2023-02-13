@@ -1,6 +1,5 @@
 import 'package:edu_point/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -13,29 +12,21 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   void logout() async {
-    // setState(() {
-    //   showSpinner = true;
-    // });
-
-    // await Future.delayed(Duration(seconds: 2));
-
-    // setState(() {
-    //   showSpinner = false;
-    // });
     await FirebaseAuth.instance.signOut();
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => const WelcomeScreen()),
         (route) => false);
   }
 
-  String UserID = FirebaseAuth.instance.currentUser!.uid;
+  String userID = FirebaseAuth.instance.currentUser!.uid;
 
-  String? name = '';
-  String? location = '';
-  String? education = '';
-  String? experience = '';
-  String? subject = '';
-  String? about = '';
+  String name = '';
+  String location = '';
+  String education = '';
+  String experience = '';
+  String subject = '';
+  String about = '';
 
   @override
   void initState() {
@@ -43,11 +34,10 @@ class _ProfileState extends State<Profile> {
     super.initState();
   }
 
-  Future getData() async {
+  getData() async {
     final ref = FirebaseDatabase.instance.ref();
-    final snapshot = await ref.child('Users/$UserID').get();
+    final snapshot = await ref.child('Users/$userID').get();
     if (snapshot.exists) {
-      // print(snapshot.value);
       setState(() {
         name = snapshot.child('name').value.toString();
         location = snapshot.child('location').value.toString();
@@ -56,28 +46,7 @@ class _ProfileState extends State<Profile> {
         subject = snapshot.child('subject').value.toString();
         about = snapshot.child('about').value.toString();
       });
-    } else {
-      print('No data available.');
     }
-
-    // name = event.snapshot.value.toString();
-
-    // await FirebaseFirestore.instance
-    //     .collection("Users")
-    //     .doc(FirebaseAuth.instance.currentUser!.uid)
-    //     .get()
-    //     .then((snapshot) async {
-    //   if (snapshot.exists) {
-    //     setState(() {
-    //       name = snapshot.data()!['name'];
-    //       location = snapshot.data()!['location'];
-    //       education = snapshot.data()!['education'];
-    //       experience = snapshot.data()!['experience'];
-    //       subject = snapshot.data()!['subject'];
-    //       about = snapshot.data()!['about'];
-    //     });
-    //   }
-    // });
   }
 
   @override
