@@ -194,18 +194,6 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                             "subject": subject,
                             "about": about
                           });
-
-                          // final info = <String, dynamic>{
-                          //   "email": uemail,
-                          //   "name": name,
-                          //   "location": location,
-                          //   "education": education,
-                          //   "experience": experience,
-                          //   "subject": subject,
-                          //   "about": about
-                          // };
-
-                          // db.collection('Users').doc(uid).set(info);
                         }
 
                         upload();
@@ -230,6 +218,23 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                         fontFamily: 'Staatliches',
                         fontSize: 35)),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'home_screen');
+                },
+                style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: const Color.fromARGB(0, 168, 175, 255),
+                    fixedSize:
+                        Size.fromWidth(MediaQuery.of(context).size.width / 4),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0))),
+                child: const Text('Skip',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 168, 175, 255),
+                        fontFamily: 'Cairo-Regular',
+                        fontSize: 16)),
+              )
             ],
           ),
         ),
