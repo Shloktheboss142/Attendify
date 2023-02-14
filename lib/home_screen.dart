@@ -7,6 +7,7 @@ import 'profile.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:open_file/open_file.dart';
 import 'package:url_launcher/url_launcher.dart';
+import './studentlist.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -519,7 +520,7 @@ class StudentAid extends StatelessWidget {
                             backgroundColor:
                                 const Color.fromARGB(255, 168, 175, 255),
                             fixedSize: Size(
-                                MediaQuery.of(context).size.width - 200, 50),
+                                MediaQuery.of(context).size.width - 250, 60),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0))),
                         child: const Text('Back',
@@ -594,7 +595,7 @@ class Healthcare extends StatelessWidget {
                             backgroundColor:
                                 const Color.fromARGB(255, 168, 175, 255),
                             fixedSize: Size(
-                                MediaQuery.of(context).size.width - 200, 50),
+                                MediaQuery.of(context).size.width - 250, 60),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0))),
                         child: const Text('Back',
@@ -669,7 +670,7 @@ class FoodNutrition extends StatelessWidget {
                             backgroundColor:
                                 const Color.fromARGB(255, 168, 175, 255),
                             fixedSize: Size(
-                                MediaQuery.of(context).size.width - 200, 50),
+                                MediaQuery.of(context).size.width - 250, 60),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0))),
                         child: const Text('Back',
@@ -744,7 +745,7 @@ class Scholarships extends StatelessWidget {
                             backgroundColor:
                                 const Color.fromARGB(255, 168, 175, 255),
                             fixedSize: Size(
-                                MediaQuery.of(context).size.width - 200, 50),
+                                MediaQuery.of(context).size.width - 250, 60),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0))),
                         child: const Text('Back',
@@ -819,7 +820,7 @@ class ExtraLessons extends StatelessWidget {
                             backgroundColor:
                                 const Color.fromARGB(255, 168, 175, 255),
                             fixedSize: Size(
-                                MediaQuery.of(context).size.width - 200, 50),
+                                MediaQuery.of(context).size.width - 250, 60),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0))),
                         child: const Text('Back',
@@ -977,7 +978,8 @@ class EnglishAttendance extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ScanBarcode()),
+                  MaterialPageRoute(
+                      builder: (context) => const ScanQRandBarcode()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -987,23 +989,7 @@ class EnglishAttendance extends StatelessWidget {
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Scan Barcode',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
-            const Text("", style: TextStyle(fontSize: 10)),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 20,
-                      MediaQuery.of(context).size.height / 8),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Scan QR',
+              child: const Text('Scan Barcode/ QR Code',
                   style: TextStyle(
                       color: Colors.black,
                       fontFamily: 'Staatliches',
@@ -1088,7 +1074,8 @@ class MathAttendance extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ScanBarcode()),
+                  MaterialPageRoute(
+                      builder: (context) => const ScanQRandBarcode()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -1098,23 +1085,7 @@ class MathAttendance extends StatelessWidget {
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Scan Barcode',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
-            const Text("", style: TextStyle(fontSize: 10)),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 20,
-                      MediaQuery.of(context).size.height / 8),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Scan QR',
+              child: const Text('Scan Barcode/ QR Code',
                   style: TextStyle(
                       color: Colors.black,
                       fontFamily: 'Staatliches',
@@ -1199,7 +1170,8 @@ class ScienceAttendance extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ScanBarcode()),
+                  MaterialPageRoute(
+                      builder: (context) => const ScanQRandBarcode()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -1209,23 +1181,7 @@ class ScienceAttendance extends StatelessWidget {
                       MediaQuery.of(context).size.height / 8),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Scan Barcode',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
-            const Text("", style: TextStyle(fontSize: 10)),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 20,
-                      MediaQuery.of(context).size.height / 8),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Scan QR',
+              child: const Text('Scan Barcode/ QR Code',
                   style: TextStyle(
                       color: Colors.black,
                       fontFamily: 'Staatliches',
@@ -1249,7 +1205,13 @@ class ScienceAttendance extends StatelessWidget {
             ),
             const Text("", style: TextStyle(fontSize: 10)),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const StudentClasses()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: const Color.fromARGB(255, 168, 175, 255),
@@ -1287,15 +1249,16 @@ class ScienceAttendance extends StatelessWidget {
   }
 }
 
-class ScanBarcode extends StatefulWidget {
+// class for Barcode and QR code scanner
+class ScanQRandBarcode extends StatefulWidget {
   final VoidCallback? foundBarcode;
-  const ScanBarcode({Key? key, this.foundBarcode}) : super(key: key);
+  const ScanQRandBarcode({Key? key, this.foundBarcode}) : super(key: key);
 
   @override
-  State<ScanBarcode> createState() => _ScanBarcodeState();
+  State<ScanQRandBarcode> createState() => _ScanQRandBarcodeState();
 }
 
-class _ScanBarcodeState extends State<ScanBarcode> {
+class _ScanQRandBarcodeState extends State<ScanQRandBarcode> {
   MobileScannerController cameraController =
       MobileScannerController(); // defining mobile scanner controller
   bool _screenOpened =
@@ -1306,7 +1269,7 @@ class _ScanBarcodeState extends State<ScanBarcode> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
-        title: const Text("Mobile Scanner"),
+        title: const Text("Scanner"),
         actions: [
           IconButton(
             color: Colors.white,
@@ -1425,6 +1388,261 @@ class _FoundCodeScreenState extends State<FoundCodeScreen> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+//class for Student classes
+class StudentClasses extends StatelessWidget {
+  const StudentClasses({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text("Student List",
+                style: TextStyle(
+                    fontSize: 28,
+                    color: Colors.white,
+                    fontFamily: 'Cairo-Regular',
+                    fontWeight: FontWeight.w400)),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const StudentNameList()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                backgroundColor: const Color.fromARGB(255, 168, 175, 255),
+                fixedSize: Size(
+                  MediaQuery.of(context).size.width - 20,
+                  MediaQuery.of(context).size.height / 12,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Class A',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Staatliches',
+                        fontSize: 35,
+                      ),
+                    ),
+                  ),
+                  const Opacity(
+                    opacity: 1.0,
+                    child: Icon(Icons.more_vert, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const StudentNameList()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                backgroundColor: const Color.fromARGB(255, 168, 175, 255),
+                fixedSize: Size(
+                  MediaQuery.of(context).size.width - 20,
+                  MediaQuery.of(context).size.height / 12,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Class B',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Staatliches',
+                        fontSize: 35,
+                      ),
+                    ),
+                  ),
+                  const Opacity(
+                    opacity: 1.0,
+                    child: Icon(Icons.more_vert, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const StudentNameList()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                backgroundColor: const Color.fromARGB(255, 168, 175, 255),
+                fixedSize: Size(
+                  MediaQuery.of(context).size.width - 10,
+                  MediaQuery.of(context).size.height / 12,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Class C',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Staatliches',
+                        fontSize: 35,
+                      ),
+                    ),
+                  ),
+                  const Opacity(
+                    opacity: 1.0,
+                    child: Icon(Icons.more_vert, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const StudentNameList()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                backgroundColor: const Color.fromARGB(255, 168, 175, 255),
+                fixedSize: Size(
+                  MediaQuery.of(context).size.width - 20,
+                  MediaQuery.of(context).size.height / 12,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Class D',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Staatliches',
+                        fontSize: 35,
+                      ),
+                    ),
+                  ),
+                  const Opacity(
+                    opacity: 1.0,
+                    child: Icon(Icons.more_vert, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+            const Text("", style: TextStyle(fontSize: 10)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
+                  fixedSize: Size(MediaQuery.of(context).size.width - 250, 60),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0))),
+              child: const Text('Back',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Staatliches',
+                      fontSize: 35)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// class for Student namelist
+class StudentNameList extends StatefulWidget {
+  const StudentNameList({Key? key}) : super(key: key);
+
+  @override
+  State<StudentNameList> createState() => _StudentNameListState();
+}
+
+class _StudentNameListState extends State<StudentNameList> {
+  final List<Student> students = [
+    Student(name: 'Robert Fox'),
+    Student(name: 'Jane Cooper'),
+    Student(name: 'Savannah Nguyen'),
+    Student(name: 'Albert Flores'),
+    Student(name: 'Theressa Web'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
+          title: const Text("Student List"),
+        ),
+        body: ListView(
+          children: students.map((st) {
+            return Card(
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(st.name,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Staatliches',
+                          fontSize: 30,
+                        )),
+                  )
+                ],
+              ),
+            );
+          }).toList(),
         ),
       ),
     );
