@@ -840,8 +840,52 @@ class Community extends StatelessWidget {
   const Community({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Community"),
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(100, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 610,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Community",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            fixedSize: Size(
+                                MediaQuery.of(context).size.width - 200, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0))),
+                        child: const Text('Back',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
+          ],
+        ),
+      ),
     );
   }
 }
@@ -1435,8 +1479,52 @@ class AttendanceReport extends StatelessWidget {
   const AttendanceReport({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Attendance Report"),
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(100, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 610,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(" Attendance Report",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            fixedSize: Size(
+                                MediaQuery.of(context).size.width - 200, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0))),
+                        child: const Text('Back',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
+          ],
+        ),
+      ),
     );
   }
 }
