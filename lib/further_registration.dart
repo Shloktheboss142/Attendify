@@ -63,14 +63,13 @@ class _FurtherRegistration extends State<FurtherRegistration> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
+      backgroundColor: Color.fromARGB(255, 40, 43, 78),
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               TextField(
                   style: const TextStyle(color: Colors.white),
@@ -83,7 +82,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'What should we call you?',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
@@ -98,7 +97,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Where are you situated? (optional)',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
@@ -113,7 +112,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Educational background (optional)',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
@@ -128,7 +127,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Years of experience (optional)',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
@@ -143,7 +142,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'What subject(s) do you teach? (optional)',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 8.0,
@@ -158,7 +157,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Give some info about yourself (optional)',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
                 height: 40.0,
@@ -172,7 +171,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                           showSpinner = true;
                         });
 
-                        await Future.delayed(Duration(seconds: 2));
+                        await Future.delayed(const Duration(seconds: 2));
 
                         final FirebaseAuth auth = FirebaseAuth.instance;
 

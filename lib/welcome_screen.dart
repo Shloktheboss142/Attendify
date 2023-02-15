@@ -39,20 +39,69 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 fontFamily: 'Cairo-Regular')),
                         RichText(
                             text: const TextSpan(
-                                text: "Edu",
+                                text: 'A',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 250, 158, 159),
                                     fontSize: 40,
                                     fontWeight: FontWeight.normal,
-                                    fontFamily: 'Cairo-Regular'),
+                                    fontFamily: 'Montserrat'),
                                 children: [
                               TextSpan(
-                                  text: ' Point',
+                                  text: 'T',
                                   style: TextStyle(
-                                      color: Color.fromRGBO(130, 133, 168, 1),
+                                      color: Color.fromARGB(255, 236, 155, 166),
                                       fontSize: 40,
                                       fontWeight: FontWeight.normal,
-                                      fontFamily: 'Cairo-Regular'))
+                                      fontFamily: 'Montserrat')),
+                              TextSpan(
+                                  text: 'T',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 223, 153, 174),
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Montserrat')),
+                              TextSpan(
+                                  text: 'E',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 208, 150, 181),
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Montserrat')),
+                              TextSpan(
+                                  text: 'N',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 195, 148, 188),
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Montserrat')),
+                              TextSpan(
+                                  text: 'D',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 181, 145, 195),
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Montserrat')),
+                              TextSpan(
+                                  text: 'I',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 167, 142, 203),
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Montserrat')),
+                              TextSpan(
+                                  text: 'F',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 153, 140, 210),
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Montserrat')),
+                              TextSpan(
+                                  text: 'Y',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 139, 137, 217),
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Montserrat')),
                             ])),
                         const Text('',
                             style: TextStyle(
