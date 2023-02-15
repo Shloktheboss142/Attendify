@@ -85,4 +85,7 @@ flutter:
     - family: Cairo     
       fonts:
         - asset: assets/Cairo-Regular.ttf
+    - family: Montserrat     
+      fonts:
+        - asset: assets/Montserrat.ttf
 
