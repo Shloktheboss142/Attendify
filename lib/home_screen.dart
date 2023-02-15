@@ -1,12 +1,8 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'profile.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:open_file/open_file.dart';
-import 'package:url_launcher/url_launcher.dart';
 import './studentlist.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,20 +22,69 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
         title: RichText(
             text: const TextSpan(
-                text: "Edu",
+                text: 'A',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 250, 158, 159),
                     fontSize: 30,
                     fontWeight: FontWeight.normal,
-                    fontFamily: 'Cairo-Regular'),
+                    fontFamily: 'Montserrat'),
                 children: [
               TextSpan(
-                  text: ' Point',
+                  text: 'T',
                   style: TextStyle(
-                      color: Color.fromRGBO(130, 133, 168, 1),
+                      color: Color.fromARGB(255, 236, 155, 166),
                       fontSize: 30,
                       fontWeight: FontWeight.normal,
-                      fontFamily: 'Cairo-Regular'))
+                      fontFamily: 'Montserrat')),
+              TextSpan(
+                  text: 'T',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 223, 153, 174),
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Montserrat')),
+              TextSpan(
+                  text: 'E',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 208, 150, 181),
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Montserrat')),
+              TextSpan(
+                  text: 'N',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 195, 148, 188),
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Montserrat')),
+              TextSpan(
+                  text: 'D',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 181, 145, 195),
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Montserrat')),
+              TextSpan(
+                  text: 'I',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 167, 142, 203),
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Montserrat')),
+              TextSpan(
+                  text: 'F',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 153, 140, 210),
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Montserrat')),
+              TextSpan(
+                  text: 'Y',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 139, 137, 217),
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Montserrat')),
             ])),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(40),
@@ -61,16 +106,46 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.circle, size: 40),
-            padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Profile()),
-              );
-            },
-          ),
+          Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(0, 98, 107, 182),
+              ),
+              child: Row(children: [
+                Material(
+                  elevation: 0,
+                  shape: const CircleBorder(),
+                  clipBehavior: Clip.hardEdge,
+                  color: Colors.transparent,
+                  child: Ink.image(
+                    image:
+                        const NetworkImage('https://i.ibb.co/vVD0gGG/doge.jpg'),
+                    fit: BoxFit.cover,
+                    width: 40,
+                    height: 40,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Profile()),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ]))
+          // IconButton(
+          //   icon: const Icon(Icons.circle, size: 40),
+          //   padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => const Profile()),
+          //     );
+          //   },
+          // ),
         ],
       ),
       bottomNavigationBar: NavigationBar(
@@ -116,7 +191,7 @@ class DashboardPage extends StatelessWidget {
       body: Container(
         color: const Color.fromRGBO(40, 43, 78, 1),
         alignment: Alignment.center,
-        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -125,7 +200,7 @@ class DashboardPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   color: const Color.fromARGB(0, 98, 107, 182),
                 ),
-                width: MediaQuery.of(context).size.width - 25,
+                width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height - 230,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,7 +232,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                         child: Container(
                           decoration: BoxDecoration(
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/LessonResources.png'),
                               fit: BoxFit.cover,
                             ),
@@ -166,8 +241,9 @@ class DashboardPage extends StatelessWidget {
                           ),
                           height:
                               (MediaQuery.of(context).size.height - 210) / 7,
-                          child: Center(
-                            child: const Text(
+                          //width: (MediaQuery.of(context).size.width),
+                          child: const Center(
+                            child: Text(
                               'Lessons & Resources',
                               style: TextStyle(
                                 color: Colors.black,
@@ -184,7 +260,7 @@ class DashboardPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const LessonResources(),
+                              builder: (context) => const StudentAid(),
                             ),
                           );
                         },
@@ -199,7 +275,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                         child: Container(
                           decoration: BoxDecoration(
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/StudentAid.png'),
                               fit: BoxFit.cover,
                             ),
@@ -208,8 +284,8 @@ class DashboardPage extends StatelessWidget {
                           ),
                           height:
                               (MediaQuery.of(context).size.height - 210) / 7,
-                          child: Center(
-                            child: const Text(
+                          child: const Center(
+                            child: Text(
                               'Student Aid',
                               style: TextStyle(
                                 color: Colors.black,
@@ -226,7 +302,7 @@ class DashboardPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const LessonResources(),
+                              builder: (context) => const Community(),
                             ),
                           );
                         },
@@ -241,7 +317,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                         child: Container(
                           decoration: BoxDecoration(
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/Community.png'),
                               fit: BoxFit.cover,
                             ),
@@ -250,8 +326,8 @@ class DashboardPage extends StatelessWidget {
                           ),
                           height:
                               (MediaQuery.of(context).size.height - 210) / 7,
-                          child: Center(
-                            child: const Text(
+                          child: const Center(
+                            child: Text(
                               'Community',
                               style: TextStyle(
                                 color: Colors.black,
@@ -268,7 +344,7 @@ class DashboardPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const LessonResources(),
+                              builder: (context) => const StudentAttendance(),
                             ),
                           );
                         },
@@ -283,7 +359,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                         child: Container(
                           decoration: BoxDecoration(
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/StudentAttendance.jpg'),
                               fit: BoxFit.cover,
                             ),
@@ -292,8 +368,8 @@ class DashboardPage extends StatelessWidget {
                           ),
                           height:
                               (MediaQuery.of(context).size.height - 210) / 7,
-                          child: Center(
-                            child: const Text(
+                          child: const Center(
+                            child: Text(
                               'Student Attendance',
                               style: TextStyle(
                                 color: Colors.black,
@@ -310,7 +386,7 @@ class DashboardPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const LessonResources(),
+                              builder: (context) => const AttendanceReport(),
                             ),
                           );
                         },
@@ -325,7 +401,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                         child: Container(
                           decoration: BoxDecoration(
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/AttendanceReport.png'),
                               fit: BoxFit.cover,
                             ),
@@ -334,8 +410,8 @@ class DashboardPage extends StatelessWidget {
                           ),
                           height:
                               (MediaQuery.of(context).size.height - 210) / 7,
-                          child: Center(
-                            child: const Text(
+                          child: const Center(
+                            child: Text(
                               'Attendance Report',
                               style: TextStyle(
                                 color: Colors.black,
@@ -1572,7 +1648,7 @@ class StudentClasses extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Text(
                       'Class A',
                       textAlign: TextAlign.center,
@@ -1613,7 +1689,7 @@ class StudentClasses extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Text(
                       'Class B',
                       textAlign: TextAlign.center,
@@ -1654,7 +1730,7 @@ class StudentClasses extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Text(
                       'Class C',
                       textAlign: TextAlign.center,
@@ -1695,7 +1771,7 @@ class StudentClasses extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Text(
                       'Class D',
                       textAlign: TextAlign.center,
@@ -1769,7 +1845,7 @@ class _StudentNameListState extends State<StudentNameList> {
                 children: [
                   Container(
                     child: Text(st.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                           fontFamily: 'Staatliches',
                           fontSize: 30,

@@ -76,11 +76,12 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(
-                    Icons.circle,
-                    color: Colors.black,
-                    size: MediaQuery.of(context).size.width / 2,
-                  ),
+                  CircleAvatar(
+                      radius: MediaQuery.of(context).size.width / 5,
+                      child: CircleAvatar(
+                          radius: MediaQuery.of(context).size.width / 5,
+                          backgroundImage: const NetworkImage(
+                              'https://i.ibb.co/vVD0gGG/doge.jpg'))),
                   Text(name.toString(),
                       style: const TextStyle(
                           fontSize: 28,
