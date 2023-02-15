@@ -72,6 +72,11 @@ flutter:
 
   assets:
     - assets/LessonResources.png
+    - assets/StudentAid.png
+    - assets/Community.png
+    - assets/StudentAttendance.jpg
+    - assets/AttendanceReport.png
+    - assets/WelcomePage.png
 
   fonts:
     - family: Staatliches     

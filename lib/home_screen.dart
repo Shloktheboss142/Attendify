@@ -138,51 +138,45 @@ class DashboardPage extends StatelessWidget {
                               fontWeight: FontWeight.w400)),
                       //const Text("", style: TextStyle(fontSize: 25)),
                       ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const LessonResources()),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor:
-                                  const Color.fromARGB(255, 168, 175, 255),
-                              minimumSize: Size(
-                                  double.infinity,
-                                  (MediaQuery.of(context).size.height - 210) /
-                                      7),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0))),
-                          child: const Text('Lessons & Resources',
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LessonResources(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          minimumSize: Size(double.infinity,
+                              (MediaQuery.of(context).size.height - 210) / 7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/LessonResources.png'),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color.fromARGB(0, 98, 107, 182),
+                          ),
+                          height:
+                              (MediaQuery.of(context).size.height - 210) / 7,
+                          child: Center(
+                            child: const Text(
+                              'Lessons & Resources',
                               style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Staatliches',
-                                  fontSize: 35))),
-                      //const Text("", style: TextStyle(fontSize: 25)),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const StudentAid()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(255, 168, 175, 255),
-                            minimumSize: Size(double.infinity,
-                                (MediaQuery.of(context).size.height - 210) / 7),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0))),
-                        child: const Text('Student Aid',
-                            style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'Staatliches',
-                                fontSize: 35)),
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                       //const Text("", style: TextStyle(fontSize: 25)),
                       ElevatedButton(
@@ -190,22 +184,41 @@ class DashboardPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Community()),
+                              builder: (context) => const LessonResources(),
+                            ),
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(255, 168, 175, 255),
-                            minimumSize: Size(double.infinity,
-                                (MediaQuery.of(context).size.height - 210) / 7),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0))),
-                        child: const Text('Community',
-                            style: TextStyle(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          minimumSize: Size(double.infinity,
+                              (MediaQuery.of(context).size.height - 210) / 7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/StudentAid.png'),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color.fromARGB(0, 98, 107, 182),
+                          ),
+                          height:
+                              (MediaQuery.of(context).size.height - 210) / 7,
+                          child: Center(
+                            child: const Text(
+                              'Student Aid',
+                              style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'Staatliches',
-                                fontSize: 35)),
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                       //const Text("", style: TextStyle(fontSize: 25)),
                       ElevatedButton(
@@ -213,23 +226,41 @@ class DashboardPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    const StudentAttendance()),
+                              builder: (context) => const LessonResources(),
+                            ),
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(255, 168, 175, 255),
-                            minimumSize: Size(double.infinity,
-                                (MediaQuery.of(context).size.height - 210) / 7),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0))),
-                        child: const Text('Student Attendance',
-                            style: TextStyle(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          minimumSize: Size(double.infinity,
+                              (MediaQuery.of(context).size.height - 210) / 7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/Community.png'),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color.fromARGB(0, 98, 107, 182),
+                          ),
+                          height:
+                              (MediaQuery.of(context).size.height - 210) / 7,
+                          child: Center(
+                            child: const Text(
+                              'Community',
+                              style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'Staatliches',
-                                fontSize: 35)),
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                       //const Text("", style: TextStyle(fontSize: 25)),
                       ElevatedButton(
@@ -237,22 +268,83 @@ class DashboardPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const AttendanceReport()),
+                              builder: (context) => const LessonResources(),
+                            ),
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(255, 168, 175, 255),
-                            minimumSize: Size(double.infinity,
-                                (MediaQuery.of(context).size.height - 210) / 7),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0))),
-                        child: const Text('Attendance Report',
-                            style: TextStyle(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          minimumSize: Size(double.infinity,
+                              (MediaQuery.of(context).size.height - 210) / 7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/StudentAttendance.jpg'),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color.fromARGB(0, 98, 107, 182),
+                          ),
+                          height:
+                              (MediaQuery.of(context).size.height - 210) / 7,
+                          child: Center(
+                            child: const Text(
+                              'Student Attendance',
+                              style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'Staatliches',
-                                fontSize: 35)),
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LessonResources(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          minimumSize: Size(double.infinity,
+                              (MediaQuery.of(context).size.height - 210) / 7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/AttendanceReport.png'),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color.fromARGB(0, 98, 107, 182),
+                          ),
+                          height:
+                              (MediaQuery.of(context).size.height - 210) / 7,
+                          child: Center(
+                            child: const Text(
+                              'Attendance Report',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ]))
           ],
