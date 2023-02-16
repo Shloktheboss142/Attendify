@@ -77,6 +77,8 @@ flutter:
     - assets/StudentAttendance.jpg
     - assets/AttendanceReport.png
     - assets/WelcomePage.png
+    - assets/LessonPlan.webp
+    - assets/ReferenceBook2.jpg
 
   fonts:
     - family: Staatliches     

@@ -438,119 +438,202 @@ class LessonResources extends StatelessWidget {
       body: Container(
         color: const Color.fromRGBO(40, 43, 78, 1),
         alignment: Alignment.center,
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("Lessons & Resources",
-                style: TextStyle(
-                    fontSize: 28,
-                    color: Colors.white,
-                    fontFamily: 'Cairo-Regular',
-                    fontWeight: FontWeight.w400)),
-            const Text("", style: TextStyle(fontSize: 25)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        backgroundColor:
-                            const Color.fromARGB(255, 168, 175, 255),
-                        fixedSize: Size(
-                            MediaQuery.of(context).size.width / 2 - 20,
-                            MediaQuery.of(context).size.height / 2 - 170),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Pre-Class',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35))),
-                const Text("  ", style: TextStyle(fontSize: 25)),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        backgroundColor:
-                            const Color.fromARGB(255, 168, 175, 255),
-                        fixedSize: Size(
-                            MediaQuery.of(context).size.width / 2 - 20,
-                            MediaQuery.of(context).size.height / 2 - 170),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Lesson Plan',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35)))
-              ],
-            ),
-            const Text("", style: TextStyle(fontSize: 10)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        backgroundColor:
-                            const Color.fromARGB(255, 168, 175, 255),
-                        fixedSize: Size(
-                            MediaQuery.of(context).size.width / 2 - 20,
-                            MediaQuery.of(context).size.height / 2 - 170),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Quizzes',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35))),
-                const Text("  ", style: TextStyle(fontSize: 25)),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        backgroundColor:
-                            const Color.fromARGB(255, 168, 175, 255),
-                        fixedSize: Size(
-                            MediaQuery.of(context).size.width / 2 - 20,
-                            MediaQuery.of(context).size.height / 2 - 170),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: const Text('Reference Book',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Staatliches',
-                            fontSize: 35)))
-              ],
-            ),
-            const Text("", style: TextStyle(fontSize: 10)),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 25, 50),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Back',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height - 500,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Lessons & Resources",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LessonPlan(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          minimumSize: Size(double.infinity,
+                              (MediaQuery.of(context).size.height - 210) / 7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage('assets/LessonPlan.webp'),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color.fromARGB(0, 98, 107, 182),
+                          ),
+                          height:
+                              (MediaQuery.of(context).size.height - 210) / 7,
+                          //width: (MediaQuery.of(context).size.width),
+                          child: const Center(
+                            child: Text(
+                              'Lesson Plan',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      //const Text("", style: TextStyle(fontSize: 25)),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ReferenceBook(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          minimumSize: Size(double.infinity,
+                              (MediaQuery.of(context).size.height - 210) / 7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage('assets/ReferenceBook2.jpg'),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color.fromARGB(0, 98, 107, 182),
+                          ),
+                          height:
+                              (MediaQuery.of(context).size.height - 210) / 7,
+                          child: const Center(
+                            child: Text(
+                              'Reference Book',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 168, 175, 255),
+                            fixedSize: Size(
+                                MediaQuery.of(context).size.width - 250, 60),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0))),
+                        child: const Text('Back',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Staatliches',
+                                fontSize: 35)),
+                      ),
+                    ]))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LessonPlan extends StatelessWidget {
+  const LessonPlan({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 220,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text("Lesson Plan",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                    ]))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ReferenceBook extends StatelessWidget {
+  const ReferenceBook({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(0, 98, 107, 182),
+                ),
+                width: MediaQuery.of(context).size.width - 25,
+                height: MediaQuery.of(context).size.height - 220,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text("Reference Book",
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: Colors.white,
+                              fontFamily: 'Cairo-Regular',
+                              fontWeight: FontWeight.w400)),
+                    ]))
           ],
         ),
       ),

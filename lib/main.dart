@@ -32,10 +32,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: FirebaseAuth.instance.currentUser == null
-          ? 'welcome_screen'
+          // ? 'welcome_screen'
+          ? 'welcome_screen_2'
           : 'home_screen',
       routes: {
-        'welcome_screen': (context) => WelcomeScreen(),
+        // 'welcome_screen': (context) => WelcomeScreen(),
+        'welcome_screen_2': (context) => WelcomeScreen(),
         'registration_screen': (context) => RegistrationScreen(),
         'further_registration': (context) => FurtherRegistration(),
         'login_screen': (context) => LoginScreen(),
