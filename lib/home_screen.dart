@@ -41,72 +41,109 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
-        title: RichText(
-            text: const TextSpan(
-                text: 'A',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 250, 158, 159),
-                    fontSize: 30,
-                    fontWeight: FontWeight.normal,
-                    fontFamily: 'Montserrat'),
-                children: [
-              TextSpan(
-                  text: 'T',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 236, 155, 166),
-                      fontSize: 30,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Montserrat')),
-              TextSpan(
-                  text: 'T',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 223, 153, 174),
-                      fontSize: 30,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Montserrat')),
-              TextSpan(
-                  text: 'E',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 208, 150, 181),
-                      fontSize: 30,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Montserrat')),
-              TextSpan(
-                  text: 'N',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 195, 148, 188),
-                      fontSize: 30,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Montserrat')),
-              TextSpan(
-                  text: 'D',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 181, 145, 195),
-                      fontSize: 30,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Montserrat')),
-              TextSpan(
-                  text: 'I',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 167, 142, 203),
-                      fontSize: 30,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Montserrat')),
-              TextSpan(
-                  text: 'F',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 153, 140, 210),
-                      fontSize: 30,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Montserrat')),
-              TextSpan(
-                  text: 'Y',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 139, 137, 217),
-                      fontSize: 30,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Montserrat')),
-            ])),
+        title: Container(
+          alignment: Alignment.center,
+          // decoration: const BoxDecoration(
+          //   color: Color.fromARGB(98, 251, 251, 251),
+          // ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Material(
+                elevation: 0,
+                shape: const CircleBorder(),
+                clipBehavior: Clip.hardEdge,
+                color: Colors.transparent,
+                child: Ink.image(
+                  image: AssetImage('assets/logo.png'),
+                  fit: BoxFit.cover,
+                  width: 40,
+                  height: 40,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Profile()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+                alignment: Alignment.centerLeft,
+                child: RichText(
+                    text: const TextSpan(
+                        text: 'A',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 250, 158, 159),
+                            fontSize: 30,
+                            fontWeight: FontWeight.normal,
+                            fontFamily: 'Montserrat'),
+                        children: [
+                      TextSpan(
+                          text: 'T',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 236, 155, 166),
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Montserrat')),
+                      TextSpan(
+                          text: 'T',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 223, 153, 174),
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Montserrat')),
+                      TextSpan(
+                          text: 'E',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 208, 150, 181),
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Montserrat')),
+                      TextSpan(
+                          text: 'N',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 195, 148, 188),
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Montserrat')),
+                      TextSpan(
+                          text: 'D',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 181, 145, 195),
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Montserrat')),
+                      TextSpan(
+                          text: 'I',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 167, 142, 203),
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Montserrat')),
+                      TextSpan(
+                          text: 'F',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 153, 140, 210),
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Montserrat')),
+                      TextSpan(
+                          text: 'Y',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 139, 137, 217),
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Montserrat')),
+                    ])),
+              )
+            ],
+          ),
+        ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(40),
           child: Column(
