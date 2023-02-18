@@ -50,6 +50,12 @@ dependencies:
 
   open_file: ^3.2.1
   url_launcher: ^6.1.9
+  image_picker: ^0.8.6+1
+  flutter_profile_picture: ^2.0.0
+  firebase_storage: ^11.0.11
+  path_provider: ^2.0.12
+  permission_handler: ^10.2.0
+  path: ^1.8.2
 
 dev_dependencies:
   flutter_test:
