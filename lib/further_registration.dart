@@ -79,7 +79,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     name = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'What should we call you?',
+                      hintText: '* What should we call you?',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
@@ -94,7 +94,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     location = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Where are you situated? (optional)',
+                      hintText: 'Where are you situated?',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
@@ -109,7 +109,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     education = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Educational background (optional)',
+                      hintText: 'Educational background',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
@@ -124,7 +124,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     experience = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Years of experience (optional)',
+                      hintText: 'Years of experience',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
@@ -139,7 +139,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     subject = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'What subject(s) do you teach? (optional)',
+                      hintText: 'What subject(s) do you teach?',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
@@ -154,11 +154,26 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                     about = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Give some info about yourself (optional)',
+                      hintText: 'Give some info about yourself',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
               const SizedBox(
-                height: 40.0,
+                height: 8,
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    Text(
+                      '* Required',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 32.0,
               ),
               ElevatedButton(
                 onPressed: submit

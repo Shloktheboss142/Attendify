@@ -17,7 +17,8 @@ class ProfilePicPicker extends StatefulWidget {
 
 class _ProfilePicPicker extends State<ProfilePicPicker> {
   String? imageURL;
-  String profilepicURL = '';
+  String profilepicURL =
+      'https://firebasestorage.googleapis.com/v0/b/edupoint-8e35b.appspot.com/o/files%2FProfile%2F0c3b3adb1a7530892e55ef36d3be6cb8.jpg?alt=media&token=79c4d9d4-0799-4740-b005-4642c626a467';
   File? photo;
   var profileURL = '';
   final ImagePicker picker = ImagePicker();
@@ -29,14 +30,14 @@ class _ProfilePicPicker extends State<ProfilePicPicker> {
     setState(() {
       if (pickedFile != null) {
         photo = File(pickedFile.path);
-        uploadProfile();
+        uploadPhoto();
       } else {
         log('No image selected.');
       }
     });
   }
 
-  Future uploadProfile() async {
+  Future uploadPhoto() async {
     if (photo == null) return;
     final fileName = basename(photo!.path);
     final destination = 'files/$fileName';
@@ -52,6 +53,10 @@ class _ProfilePicPicker extends State<ProfilePicPicker> {
       log('error occured');
     }
 
+    uploadProfileToDB();
+  }
+
+  Future uploadProfileToDB() async {
     String userID = FirebaseAuth.instance.currentUser!.uid;
     DatabaseReference ref = FirebaseDatabase.instance.ref("Users/$userID");
     await ref.update({
@@ -74,7 +79,9 @@ class _ProfilePicPicker extends State<ProfilePicPicker> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  getFromGallery();
+                },
                 elevation: 1,
                 shape: const CircleBorder(),
                 clipBehavior: Clip.hardEdge,
@@ -86,24 +93,39 @@ class _ProfilePicPicker extends State<ProfilePicPicker> {
                   height: MediaQuery.of(context).size.width / 2.5,
                 )),
             const SizedBox(
+              height: 10.0,
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    'Click above icon to select image',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
               height: 80.0,
             ),
-            ElevatedButton(
-              onPressed: () {
-                getFromGallery();
-              },
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: const Color.fromARGB(255, 168, 175, 255),
-                  fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0))),
-              child: const Text('Choose Profile Picture',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Staatliches',
-                      fontSize: 35)),
-            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     getFromGallery();
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //       elevation: 0,
+            //       backgroundColor: const Color.fromARGB(255, 168, 175, 255),
+            //       fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
+            //       shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.circular(15.0))),
+            //   child: const Text('Choose Profile Picture',
+            //       style: TextStyle(
+            //           color: Colors.black,
+            //           fontFamily: 'Staatliches',
+            //           fontSize: 35)),
+            // ),
             const Text("", style: TextStyle(fontSize: 10)),
             ElevatedButton(
               onPressed: submit
@@ -127,6 +149,25 @@ class _ProfilePicPicker extends State<ProfilePicPicker> {
                       fontFamily: 'Staatliches',
                       fontSize: 35)),
             ),
+            ElevatedButton(
+              onPressed: () {
+                uploadProfileToDB();
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const HomePage()));
+              },
+              style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: const Color.fromARGB(0, 168, 175, 255),
+                  fixedSize:
+                      Size.fromWidth(MediaQuery.of(context).size.width / 4),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0))),
+              child: const Text('Skip',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 168, 175, 255),
+                      fontFamily: 'Cairo-Regular',
+                      fontSize: 16)),
+            )
           ],
         ),
       ),

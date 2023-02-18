@@ -27,7 +27,8 @@ class _ProfileState extends State<Profile> {
   String experience = '';
   String subject = '';
   String about = '';
-  String ProfileURL = '';
+  String ProfileURL =
+      'https://firebasestorage.googleapis.com/v0/b/edupoint-8e35b.appspot.com/o/files%2FProfile%2F0c3b3adb1a7530892e55ef36d3be6cb8.jpg?alt=media&token=79c4d9d4-0799-4740-b005-4642c626a467';
 
   @override
   void initState() {
@@ -79,6 +80,8 @@ class _ProfileState extends State<Profile> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleAvatar(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.white,
                       radius: MediaQuery.of(context).size.width / 5,
                       child: CircleAvatar(
                           radius: MediaQuery.of(context).size.width / 5,
