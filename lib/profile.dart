@@ -27,6 +27,7 @@ class _ProfileState extends State<Profile> {
   String experience = '';
   String subject = '';
   String about = '';
+  String ProfileURL = '';
 
   @override
   void initState() {
@@ -45,6 +46,7 @@ class _ProfileState extends State<Profile> {
         experience = snapshot.child('experience').value.toString();
         subject = snapshot.child('subject').value.toString();
         about = snapshot.child('about').value.toString();
+        ProfileURL = snapshot.child('profile_picture').value.toString();
       });
     }
   }
@@ -80,8 +82,7 @@ class _ProfileState extends State<Profile> {
                       radius: MediaQuery.of(context).size.width / 5,
                       child: CircleAvatar(
                           radius: MediaQuery.of(context).size.width / 5,
-                          backgroundImage: const NetworkImage(
-                              'https://i.ibb.co/vVD0gGG/doge.jpg'))),
+                          backgroundImage: NetworkImage(ProfileURL))),
                   Text(name.toString(),
                       style: const TextStyle(
                           fontSize: 28,

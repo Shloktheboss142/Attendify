@@ -4,6 +4,8 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'profile.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import './studentlist.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,6 +15,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentPageIndex = 0;
+  String userID = FirebaseAuth.instance.currentUser!.uid;
+  String ProfileURL = '';
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  getData() async {
+    final ref = FirebaseDatabase.instance.ref();
+    final snapshot = await ref.child('Users/$userID').get();
+    if (snapshot.exists) {
+      setState(() {
+        ProfileURL = snapshot.child('profile_picture').value.toString();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,8 +140,7 @@ class _HomePageState extends State<HomePage> {
                   clipBehavior: Clip.hardEdge,
                   color: Colors.transparent,
                   child: Ink.image(
-                    image:
-                        const NetworkImage('https://i.ibb.co/vVD0gGG/doge.jpg'),
+                    image: NetworkImage(ProfileURL),
                     fit: BoxFit.cover,
                     width: 40,
                     height: 40,

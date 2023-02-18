@@ -1,11 +1,9 @@
-import 'dart:math';
+import 'package:edu_point/profile_pic.dart';
 import 'package:flutter/services.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 const kTextFieldDecoration = InputDecoration(
@@ -29,6 +27,7 @@ class FurtherRegistration extends StatefulWidget {
   const FurtherRegistration({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FurtherRegistration createState() => _FurtherRegistration();
 }
 
@@ -45,7 +44,6 @@ class _FurtherRegistration extends State<FurtherRegistration> {
   var db = FirebaseFirestore.instance;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.addListener(() {
       setState(() {
@@ -63,7 +61,7 @@ class _FurtherRegistration extends State<FurtherRegistration> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 40, 43, 78),
+      backgroundColor: const Color.fromARGB(255, 40, 43, 78),
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -197,7 +195,12 @@ class _FurtherRegistration extends State<FurtherRegistration> {
 
                         upload();
 
-                        Navigator.pushNamed(context, 'home_screen');
+                        // ignore: use_build_context_synchronously
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ProfilePicPicker()));
 
                         setState(() {
                           showSpinner = false;
@@ -219,7 +222,10 @@ class _FurtherRegistration extends State<FurtherRegistration> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'home_screen');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfilePicPicker()));
                 },
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
