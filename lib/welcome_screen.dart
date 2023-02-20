@@ -39,12 +39,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text("Welcome to",
+                                  const Text("WELCOME TO",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,
                                           fontWeight: FontWeight.normal,
-                                          fontFamily: 'Cairo-Regular')),
+                                          fontFamily: 'Montserrat')),
                                   const Text('',
                                       style: TextStyle(
                                           color: Colors.black,

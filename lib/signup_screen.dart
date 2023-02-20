@@ -5,20 +5,26 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 const kTextFieldDecoration = InputDecoration(
-  hintText: 'Enter a value',
+  floatingLabelStyle: TextStyle(color: Color.fromARGB(255, 168, 175, 255)),
+  labelStyle: TextStyle(color: Color.fromARGB(150, 255, 255, 255)),
   hintStyle: TextStyle(color: Colors.white),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-  border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(15.0)),
-  ),
-  enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
-    borderRadius: BorderRadius.all(Radius.circular(15.0)),
-  ),
-  focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
-    borderRadius: BorderRadius.all(Radius.circular(15.0)),
-  ),
+  border: UnderlineInputBorder(),
+  // OutlineInputBorder(
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // ),
+  enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255))),
+  // OutlineInputBorder(
+  //   borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // ),
+  focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255))),
+  // OutlineInputBorder(
+  //   borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // )
 );
 
 class RegistrationScreen extends StatefulWidget {
@@ -73,31 +79,39 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                   onChanged: (value) {
                     email = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
+                      prefixIcon: const Icon(Icons.mail,
+                          color: Color.fromARGB(255, 168, 175, 255)),
+                      labelText: 'Email',
                       hintText: emailText,
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
-              const SizedBox(
-                height: 8.0,
-              ),
+              // const SizedBox(
+              //   height: 8.0,
+              // ),
               ValueListenableBuilder<bool>(
                 valueListenable: _passwordVisible,
                 builder: (context, value, child) {
                   return TextField(
+                      controller: controller,
                       style: const TextStyle(color: Colors.white),
                       cursorColor: Colors.white,
                       obscureText: value,
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.justify,
                       onChanged: (value) {
                         password = value;
                       },
                       decoration: kTextFieldDecoration.copyWith(
+                        prefixIcon: const Icon(Icons.lock,
+                            color: Color.fromARGB(255, 168, 175, 255)),
+                        labelText: 'Password',
                         hintText: passwordText,
-                        hintStyle: TextStyle(color: passwordColor),
+                        hintStyle: const TextStyle(
+                            color: Color.fromARGB(150, 255, 255, 255)),
                         suffixIcon: IconButton(
                           icon: Icon(
                             value ? Icons.visibility : Icons.visibility_off,
@@ -111,7 +125,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 },
               ),
               const SizedBox(
-                height: 8.0,
+                height: 10.0,
               ),
               FlutterPwValidator(
                 controller: controller,
@@ -122,10 +136,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 width: 380,
                 height: 120,
                 onSuccess: () {
-                  submit = true;
+                  setState(() {
+                    submit = true;
+                  });
                 },
                 onFail: () {
-                  submit = false;
+                  setState(() {
+                    submit = false;
+                  });
                 },
               ),
               const SizedBox(

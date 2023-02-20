@@ -7,20 +7,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 const kTextFieldDecoration = InputDecoration(
-  hintText: 'Enter a value',
+  floatingLabelStyle: TextStyle(color: Color.fromARGB(255, 168, 175, 255)),
+  labelStyle: TextStyle(color: Color.fromARGB(150, 255, 255, 255)),
   hintStyle: TextStyle(color: Colors.white),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-  border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(15.0)),
-  ),
-  enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
-    borderRadius: BorderRadius.all(Radius.circular(15.0)),
-  ),
-  focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
-    borderRadius: BorderRadius.all(Radius.circular(15.0)),
-  ),
+  border: UnderlineInputBorder(),
+  // OutlineInputBorder(
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // ),
+  enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255))),
+  // OutlineInputBorder(
+  //   borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // ),
+  focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255))),
+  // OutlineInputBorder(
+  //   borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // )
 );
 
 class FurtherRegistration extends StatefulWidget {
@@ -74,86 +80,104 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                   cursorColor: Colors.white,
                   controller: controller,
                   obscureText: false,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                   onChanged: (value) {
                     name = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                      hintText: '* What should we call you?',
+                      prefixIcon: const Icon(Icons.person,
+                          color: Color.fromARGB(255, 168, 175, 255)),
+                      labelText: 'Name *',
+                      hintText: 'What should we call you?',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
-              const SizedBox(
-                height: 8.0,
-              ),
+              // const SizedBox(
+              //   height: 8.0,
+              // ),
               TextField(
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   obscureText: false,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                   onChanged: (value) {
                     location = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
+                      prefixIcon: const Icon(Icons.location_on,
+                          color: Color.fromARGB(255, 168, 175, 255)),
+                      labelText: 'Location',
                       hintText: 'Where are you situated?',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
-              const SizedBox(
-                height: 8.0,
-              ),
+              // const SizedBox(
+              //   height: 8.0,
+              // ),
               TextField(
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   obscureText: false,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                   onChanged: (value) {
                     education = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
+                      prefixIcon: const Icon(Icons.school,
+                          color: Color.fromARGB(255, 168, 175, 255)),
+                      labelText: 'Education',
                       hintText: 'Educational background',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
-              const SizedBox(
-                height: 8.0,
-              ),
+              // const SizedBox(
+              //   height: 8.0,
+              // ),
               TextField(
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   obscureText: false,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                   onChanged: (value) {
                     experience = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
+                      prefixIcon: const Icon(Icons.work,
+                          color: Color.fromARGB(255, 168, 175, 255)),
+                      labelText: 'Experience',
                       hintText: 'Years of experience',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
-              const SizedBox(
-                height: 8.0,
-              ),
+              // const SizedBox(
+              //   height: 8.0,
+              // ),
               TextField(
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   obscureText: false,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                   onChanged: (value) {
                     subject = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
+                      prefixIcon: const Icon(Icons.subject,
+                          color: Color.fromARGB(255, 168, 175, 255)),
+                      labelText: 'Subjects',
                       hintText: 'What subject(s) do you teach?',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
-              const SizedBox(
-                height: 8.0,
-              ),
+              // const SizedBox(
+              //   height: 8.0,
+              // ),
               TextField(
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   obscureText: false,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                   onChanged: (value) {
                     about = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
+                      prefixIcon: const Icon(Icons.question_mark,
+                          color: Color.fromARGB(255, 168, 175, 255)),
+                      labelText: 'About',
                       hintText: 'Give some info about yourself',
                       hintStyle: const TextStyle(
                           color: Color.fromARGB(150, 255, 255, 255)))),
@@ -167,7 +191,8 @@ class _FurtherRegistration extends State<FurtherRegistration> {
                   children: const [
                     Text(
                       '* Required',
-                      style: TextStyle(color: Colors.red),
+                      style:
+                          TextStyle(color: Color.fromARGB(150, 255, 255, 255)),
                     ),
                   ],
                 ),
