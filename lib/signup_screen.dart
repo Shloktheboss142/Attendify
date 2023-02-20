@@ -40,6 +40,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   bool showSpinner = false;
   final TextEditingController controller = TextEditingController();
   bool submit = false;
+  ValueNotifier<bool> _passwordVisible =
+      ValueNotifier<bool>(true); //to track password visibility
+
   @override
   void initState() {
     super.initState();
@@ -81,19 +84,32 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               const SizedBox(
                 height: 8.0,
               ),
-              TextField(
-                  style: const TextStyle(color: Colors.white),
-                  controller: controller,
-                  cursorColor: Colors.white,
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: passwordText,
-                      hintStyle: const TextStyle(
-                          color: Color.fromARGB(150, 255, 255, 255)))),
+              ValueListenableBuilder<bool>(
+                valueListenable: _passwordVisible,
+                builder: (context, value, child) {
+                  return TextField(
+                      style: const TextStyle(color: Colors.white),
+                      cursorColor: Colors.white,
+                      obscureText: value,
+                      textAlign: TextAlign.center,
+                      onChanged: (value) {
+                        password = value;
+                      },
+                      decoration: kTextFieldDecoration.copyWith(
+                        hintText: passwordText,
+                        hintStyle: TextStyle(color: passwordColor),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            value ? Icons.visibility : Icons.visibility_off,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            _passwordVisible.value = !_passwordVisible.value;
+                          },
+                        ),
+                      ));
+                },
+              ),
               const SizedBox(
                 height: 8.0,
               ),

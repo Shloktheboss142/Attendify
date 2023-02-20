@@ -35,6 +35,14 @@ class _LoginScreenState extends State<LoginScreen> {
   String email = '';
   String password = '';
   bool showSpinner = false;
+  ValueNotifier<bool> _isObscure = ValueNotifier<bool>(true);
+
+  @override
+  void dispose() {
+    _isObscure.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,17 +68,32 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 8.0,
               ),
-              TextField(
-                  style: const TextStyle(color: Colors.white),
-                  cursorColor: Colors.white,
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: passwordText,
-                      hintStyle: TextStyle(color: passwordColor))),
+              ValueListenableBuilder<bool>(
+                valueListenable: _isObscure,
+                builder: (context, value, child) {
+                  return TextField(
+                      style: const TextStyle(color: Colors.white),
+                      cursorColor: Colors.white,
+                      obscureText: value,
+                      textAlign: TextAlign.center,
+                      onChanged: (value) {
+                        password = value;
+                      },
+                      decoration: kTextFieldDecoration.copyWith(
+                        hintText: passwordText,
+                        hintStyle: TextStyle(color: passwordColor),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            value ? Icons.visibility : Icons.visibility_off,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            _isObscure.value = !_isObscure.value;
+                          },
+                        ),
+                      ));
+                },
+              ),
               const SizedBox(
                 height: 24.0,
               ),
