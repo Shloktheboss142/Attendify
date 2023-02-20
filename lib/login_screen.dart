@@ -3,20 +3,27 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter/material.dart';
 
 const kTextFieldDecoration = InputDecoration(
-    hintText: 'Enter a value',
-    hintStyle: TextStyle(color: Colors.white),
-    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
-      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
-      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-    ));
+  floatingLabelStyle: TextStyle(color: Color.fromARGB(255, 168, 175, 255)),
+  labelStyle: TextStyle(color: Color.fromARGB(150, 255, 255, 255)),
+  hintStyle: TextStyle(color: Colors.white),
+  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+  border: UnderlineInputBorder(),
+  // OutlineInputBorder(
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // ),
+  enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255))),
+  // OutlineInputBorder(
+  //   borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // ),
+  focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255))),
+  // OutlineInputBorder(
+  //   borderSide: BorderSide(color: Color.fromARGB(255, 168, 175, 255)),
+  //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  // )
+);
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -58,16 +65,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: const TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                   onChanged: (value) {
                     email = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
+                      prefixIcon: const Icon(Icons.mail,
+                          color: Color.fromARGB(255, 168, 175, 255)),
+                      labelText: 'Email',
                       hintText: emailText,
                       hintStyle: TextStyle(color: emailColor))),
-              const SizedBox(
-                height: 8.0,
-              ),
+              // const SizedBox(
+              //   height: 8.0,
+              // ),
               ValueListenableBuilder<bool>(
                 valueListenable: _isObscure,
                 builder: (context, value, child) {
@@ -75,11 +85,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: const TextStyle(color: Colors.white),
                       cursorColor: Colors.white,
                       obscureText: value,
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.justify,
                       onChanged: (value) {
                         password = value;
                       },
                       decoration: kTextFieldDecoration.copyWith(
+                        prefixIcon: const Icon(Icons.lock,
+                            color: Color.fromARGB(255, 168, 175, 255)),
+                        labelText: 'Password',
                         hintText: passwordText,
                         hintStyle: TextStyle(color: passwordColor),
                         suffixIcon: IconButton(
