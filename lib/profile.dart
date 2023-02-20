@@ -2,6 +2,11 @@ import 'package:edu_point/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'dart:developer';
+import 'package:path/path.dart' as Path;
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -11,15 +16,15 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  void logout() async {
-    await FirebaseAuth.instance.signOut();
-    // ignore: use_build_context_synchronously
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
-        (route) => false);
+  Future logout() async {
+    await FirebaseAuth.instance.signOut().then((value) => Navigator.of(context)
+        .pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => WelcomeScreen()),
+            (route) => false));
   }
 
-  String userID = FirebaseAuth.instance.currentUser!.uid;
+  String? userID = FirebaseAuth.instance.currentUser?.uid;
+  final ImagePicker picker = ImagePicker();
 
   String name = '';
   String location = '';
@@ -27,13 +32,55 @@ class _ProfileState extends State<Profile> {
   String experience = '';
   String subject = '';
   String about = '';
-  String ProfileURL =
+  String profilepicURL =
       'https://firebasestorage.googleapis.com/v0/b/edupoint-8e35b.appspot.com/o/files%2FProfile%2F0c3b3adb1a7530892e55ef36d3be6cb8.jpg?alt=media&token=79c4d9d4-0799-4740-b005-4642c626a467';
+  File? photo;
+  var profileURL = '';
 
   @override
   void initState() {
     getData();
     super.initState();
+  }
+
+  Future getFromGallery() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        photo = File(pickedFile.path);
+        uploadPhoto();
+      } else {
+        log('No image selected.');
+      }
+    });
+  }
+
+  Future uploadPhoto() async {
+    if (photo == null) return;
+    final fileName = Path.basename(photo!.path);
+    final destination = 'files/$fileName';
+
+    try {
+      final ref = FirebaseStorage.instance.ref(destination).child('file/');
+      await ref.putFile(photo!);
+      profileURL = await ref.getDownloadURL();
+      setState(() {
+        profilepicURL = profileURL;
+      });
+    } catch (e) {
+      log('error occured');
+    }
+
+    uploadProfileToDB();
+  }
+
+  Future uploadProfileToDB() async {
+    String userID = FirebaseAuth.instance.currentUser!.uid;
+    DatabaseReference ref = FirebaseDatabase.instance.ref("Users/$userID");
+    await ref.update({
+      "profile_picture": profilepicURL,
+    });
   }
 
   getData() async {
@@ -47,7 +94,7 @@ class _ProfileState extends State<Profile> {
         experience = snapshot.child('experience').value.toString();
         subject = snapshot.child('subject').value.toString();
         about = snapshot.child('about').value.toString();
-        ProfileURL = snapshot.child('profile_picture').value.toString();
+        profilepicURL = snapshot.child('profile_picture').value.toString();
       });
     }
   }
@@ -79,13 +126,20 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CircleAvatar(
-                      backgroundColor: Colors.white,
-                      foregroundColor: Colors.white,
-                      radius: MediaQuery.of(context).size.width / 5,
-                      child: CircleAvatar(
-                          radius: MediaQuery.of(context).size.width / 5,
-                          backgroundImage: NetworkImage(ProfileURL))),
+                  MaterialButton(
+                      onPressed: () {
+                        getFromGallery();
+                      },
+                      elevation: 1,
+                      shape: const CircleBorder(),
+                      clipBehavior: Clip.hardEdge,
+                      color: Colors.transparent,
+                      child: Ink.image(
+                        image: NetworkImage(profilepicURL),
+                        fit: BoxFit.cover,
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        height: MediaQuery.of(context).size.width / 2.5,
+                      )),
                   Text(name.toString(),
                       style: const TextStyle(
                           fontSize: 28,

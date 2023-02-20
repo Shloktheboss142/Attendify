@@ -43,9 +43,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
         title: Container(
           alignment: Alignment.center,
-          // decoration: const BoxDecoration(
-          //   color: Color.fromARGB(98, 251, 251, 251),
-          // ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -193,16 +190,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ]))
-          // IconButton(
-          //   icon: const Icon(Icons.circle, size: 40),
-          //   padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => const Profile()),
-          //     );
-          //   },
-          // ),
         ],
       ),
       bottomNavigationBar: NavigationBar(
