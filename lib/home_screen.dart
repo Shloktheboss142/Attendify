@@ -1352,7 +1352,13 @@ class EnglishAttendance extends StatelessWidget {
             ),
             const Text("", style: TextStyle(fontSize: 10)),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const StudentClasses()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: const Color.fromARGB(255, 168, 175, 255),
@@ -1448,7 +1454,13 @@ class MathAttendance extends StatelessWidget {
             ),
             const Text("", style: TextStyle(fontSize: 10)),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const StudentClasses()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: const Color.fromARGB(255, 168, 175, 255),
@@ -1757,8 +1769,7 @@ class StudentClasses extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const StudentNameList()),
+                  MaterialPageRoute(builder: (context) => StudentNameListA()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -1798,8 +1809,7 @@ class StudentClasses extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const StudentNameList()),
+                  MaterialPageRoute(builder: (context) => StudentNameListB()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -1839,8 +1849,7 @@ class StudentClasses extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const StudentNameList()),
+                  MaterialPageRoute(builder: (context) => StudentNameListC()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -1880,8 +1889,7 @@ class StudentClasses extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const StudentNameList()),
+                  MaterialPageRoute(builder: (context) => StudentNameListD()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -1940,48 +1948,279 @@ class StudentClasses extends StatelessWidget {
   }
 }
 
-// class for Student namelist
-class StudentNameList extends StatefulWidget {
-  const StudentNameList({Key? key}) : super(key: key);
-
-  @override
-  State<StudentNameList> createState() => _StudentNameListState();
-}
-
-class _StudentNameListState extends State<StudentNameList> {
-  final List<Student> students = [
-    Student(name: 'Robert Fox'),
-    Student(name: 'Jane Cooper'),
-    Student(name: 'Savannah Nguyen'),
-    Student(name: 'Albert Flores'),
-    Student(name: 'Theressa Web'),
+class StudentNameListA extends StatelessWidget {
+  final List<String> studentNames = [
+    'John Doe',
+    'Jane Smith',
+    'Bob Johnson',
+    'Ali',
+    'Ah Kau',
+    'Abu',
+    'Ryker',
+    'Ryan',
+    'Amanda',
+    'Andy',
+    'Shlok',
+    'Bel',
+    'Laila',
+    'Ramesh',
+    'Siti',
+    'Amad',
+    'Muthu',
+    'Leo',
+    'Wai Jin',
+    'Peter',
   ];
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
-          title: const Text("Student List"),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
+        title: const Text(
+          'Class A Student List',
+          style: TextStyle(
+            fontSize: 28,
+            color: Colors.white,
+            fontFamily: 'Cairo-Regular',
+            fontWeight: FontWeight.w400,
+          ),
         ),
-        body: ListView(
-          children: students.map((st) {
-            return Card(
-              child: Row(
-                children: [
-                  Container(
-                    child: Text(st.name,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Staatliches',
-                          fontSize: 30,
-                        )),
-                  )
-                ],
+        centerTitle: true,
+      ),
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color.fromARGB(255, 168, 175, 255),
               ),
-            );
-          }).toList(),
+              width: MediaQuery.of(context).size.width - 25,
+              height: MediaQuery.of(context).size.height - 120,
+              child: ListView.builder(
+                itemCount: studentNames.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                      studentNames[index],
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StudentNameListB extends StatelessWidget {
+  final List<String> studentNames = [
+    'Johny Depp',
+    'Peter Parker',
+    'Christiano Ronaldo',
+    'Billie Eilish',
+    'Neymar Da Silva Santos Junior',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
+        title: const Text(
+          'Class B Student List',
+          style: TextStyle(
+            fontSize: 28,
+            color: Colors.white,
+            fontFamily: 'Cairo-Regular',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color.fromARGB(255, 168, 175, 255),
+              ),
+              width: MediaQuery.of(context).size.width - 25,
+              height: MediaQuery.of(context).size.height - 120,
+              child: ListView.builder(
+                itemCount: studentNames.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                      studentNames[index],
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StudentNameListC extends StatelessWidget {
+  final List<String> studentNames = [
+    'Jeffry Bezoz',
+    'Elon Musk',
+    'Unknown',
+    'Ali',
+    'Ah Kau',
+    'Abu',
+    'Lily',
+    'Ryan',
+    'Suzy',
+    'Andy',
+    'Shlok',
+    'Bel',
+    'Laila',
+    'Ramesh',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
+        title: const Text(
+          'Class C Student List',
+          style: TextStyle(
+            fontSize: 28,
+            color: Colors.white,
+            fontFamily: 'Cairo-Regular',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color.fromARGB(255, 168, 175, 255),
+              ),
+              width: MediaQuery.of(context).size.width - 25,
+              height: MediaQuery.of(context).size.height - 120,
+              child: ListView.builder(
+                itemCount: studentNames.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                      studentNames[index],
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StudentNameListD extends StatelessWidget {
+  final List<String> studentNames = [
+    'John Doe',
+    'Jane Smith',
+    'Bob Johnson',
+    'Ali',
+    'Ah Kau',
+    'Abu',
+    'Ryker',
+    'Ryan',
+    'Amanda',
+    'Andy',
+    'Shlok',
+    'Bel',
+    'Laila',
+    'Ramesh',
+    'Siti',
+    'Amad',
+    'Muthu',
+    'Leo',
+    'Wai Jin',
+    'Peter',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
+        title: const Text(
+          'Class D Student List',
+          style: TextStyle(
+            fontSize: 28,
+            color: Colors.white,
+            fontFamily: 'Cairo-Regular',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: Container(
+        color: const Color.fromRGBO(40, 43, 78, 1),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: const Color.fromARGB(255, 168, 175, 255),
+              ),
+              width: MediaQuery.of(context).size.width - 25,
+              height: MediaQuery.of(context).size.height - 120,
+              child: ListView.builder(
+                itemCount: studentNames.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                      studentNames[index],
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
