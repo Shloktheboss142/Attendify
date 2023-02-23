@@ -57,15 +57,6 @@ class _HomePageState extends State<HomePage> {
                   fit: BoxFit.cover,
                   width: 40,
                   height: 40,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Profile()),
-                      );
-                    },
-                  ),
                 ),
               ),
               Container(

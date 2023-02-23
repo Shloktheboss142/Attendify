@@ -46,9 +46,11 @@ dependencies:
   mobile_scanner: ^1.0.0
   
   firebase_database: ^10.0.10
+
   syncfusion_flutter_pdfviewer: ^20.4.49
 
   open_file: ^3.2.1
+
   url_launcher: ^6.1.9
   image_picker: ^0.8.6+1
   flutter_profile_picture: ^2.0.0
