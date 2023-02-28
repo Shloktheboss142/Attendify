@@ -6,6 +6,7 @@ import 'home_screen.dart';
 import 'signup_screen.dart';
 import 'login_screen.dart';
 import 'further_registration.dart';
+import 'profile_pic.dart';
 import 'dart:async';
 
 void main() async {
@@ -32,12 +33,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: FirebaseAuth.instance.currentUser == null
-          ? 'welcome_screen'
+          // ? 'welcome_screen'
+          ? 'welcome_screen_2'
           : 'home_screen',
       routes: {
-        'welcome_screen': (context) => WelcomeScreen(),
+        // 'welcome_screen': (context) => WelcomeScreen(),
+        'welcome_screen_2': (context) => WelcomeScreen(),
         'registration_screen': (context) => RegistrationScreen(),
         'further_registration': (context) => FurtherRegistration(),
+        'profile_pic': (context) => ProfilePicPicker(),
         'login_screen': (context) => LoginScreen(),
         'home_screen': (context) => HomePage()
       },

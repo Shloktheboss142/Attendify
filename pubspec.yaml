@@ -31,8 +31,6 @@ dependencies:
 
   jiffy: ^5.0.0
 
-  flutter_barcode_scanner: ^2.0.0
-
   cloud_firestore: ^4.3.1
 
   firebase_auth: ^4.2.5
@@ -44,8 +42,23 @@ dependencies:
   flutter_pw_validator: ^1.5.0
 
   shared_preferences: ^2.0.17
+
+  mobile_scanner: ^1.0.0
   
-  qr_code_scanner: ^1.0.1
+  firebase_database: ^10.0.10
+
+  syncfusion_flutter_pdfviewer: ^20.4.49
+
+  open_file: ^3.2.1
+
+  url_launcher: ^6.1.9
+  image_picker: ^0.8.6+1
+  flutter_profile_picture: ^2.0.0
+  firebase_storage: ^11.0.11
+  path_provider: ^2.0.12
+  permission_handler: ^10.2.0
+  path: ^1.8.2
+  simple_animations: ^5.0.0+3
 
 dev_dependencies:
   flutter_test:
@@ -58,8 +71,8 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/edu_point.png"
-  adaptive_icon_foreground: "assets/edu_point.png"
+  image_path: "assets/attendify.png"
+  adaptive_icon_foreground: "assets/attendify.png"
   # adaptive_icon_foreground: '#282b4e'
 
 
@@ -68,7 +81,14 @@ flutter:
 
   assets:
     - assets/LessonResources.png
-    - assets/english.jpg
+    - assets/StudentAid.png
+    - assets/Community.png
+    - assets/StudentAttendance.jpg
+    - assets/AttendanceReport.png
+    - assets/WelcomePage.png
+    - assets/LessonPlan.webp
+    - assets/ReferenceBook2.jpg
+    - assets/logo.png
 
   fonts:
     - family: Staatliches     
@@ -77,4 +97,7 @@ flutter:
     - family: Cairo     
       fonts:
         - asset: assets/Cairo-Regular.ttf
+    - family: Montserrat     
+      fonts:
+        - asset: assets/Montserrat.ttf
 

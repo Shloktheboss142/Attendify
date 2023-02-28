@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1056936721175',
     projectId: 'edupoint-8e35b',
     storageBucket: 'edupoint-8e35b.appspot.com',
-    iosClientId: '1056936721175-jc69qlmfvodis090ekh66duva3q8sbjg.apps.googleusercontent.com',
+    iosClientId:
+        '1056936721175-jc69qlmfvodis090ekh66duva3q8sbjg.apps.googleusercontent.com',
     iosBundleId: 'com.example.eduPoint',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1056936721175',
     projectId: 'edupoint-8e35b',
     storageBucket: 'edupoint-8e35b.appspot.com',
-    iosClientId: '1056936721175-jc69qlmfvodis090ekh66duva3q8sbjg.apps.googleusercontent.com',
+    iosClientId:
+        '1056936721175-jc69qlmfvodis090ekh66duva3q8sbjg.apps.googleusercontent.com',
     iosBundleId: 'com.example.eduPoint',
   );
 }
