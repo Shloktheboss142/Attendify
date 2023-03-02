@@ -192,11 +192,14 @@ class _HomePageState extends State<HomePage> {
         selectedIndex: currentPageIndex,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         backgroundColor: const Color.fromRGBO(40, 43, 78, 1),
+        //surfaceTintColor: Colors.pink,
+        
         destinations: const <Widget>[
           NavigationDestination(
+            
             selectedIcon: Icon(Icons.home, color: Colors.white),
             icon: Icon(Icons.home_outlined, color: Colors.white),
-            label: "",
+            label: ""
           ),
           NavigationDestination(
               selectedIcon: Icon(Icons.info, color: Colors.white),
@@ -207,6 +210,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.settings_outlined, color: Colors.white),
               label: ""),
         ],
+        
       ),
       body: <Widget>[
         DashboardPage(),
